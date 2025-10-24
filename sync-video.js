@@ -1,4 +1,4 @@
-// sync-video.js
+// sync-video.js - VERSI FINAL DENGAN DELAY DAN VISUAL LOADING
 
 // ---------------------------------------------
 // 1. INISIASI LENIS (SMOOTH SCROLL)
@@ -32,8 +32,8 @@ function initSmoothScroll() {
     console.log("Lenis Smooth Scroll Activated.");
 }
 
-// Panggil fungsi Lenis saat script dimuat
-initSmoothScroll(); 
+// !!! DIHAPUS: initSmoothScroll();
+// Kita panggil di startEverything() agar ada delay.
 
 
 // ---------------------------------------------
@@ -115,7 +115,11 @@ function initializePlayers() {
                             iframeKiri.classList.add('is-ready');
                             iframeKanan.classList.add('is-ready');
 
-                            console.log(`[AWAL] Sinkronisasi Awal Selesai di ${syncTime.toFixed(2)}s.`);
+                            // HILANGKAN SKELETON LOADING (Tambahkan class is-loaded ke WRAPPER)
+                            iframeKiri.closest('.video-wrapper').classList.add('is-loaded');
+                            iframeKanan.closest('.video-wrapper').classList.add('is-loaded');
+
+                            console.log(`[AWAL] Sinkronisasi Awal Selesai di ${syncTime.toFixed(2)}s. Loading Visual Dihapus.`);
                             
                             // 4. Mulai pengecekan anti-drift
                             startDriftCheck(); 
@@ -128,6 +132,10 @@ function initializePlayers() {
                 iframeKiri.classList.add('is-ready');
                 iframeKanan.classList.add('is-ready');
                 console.error("Gagal Autoplay. Blokir browser:", error);
+
+                // Hapus loading visual agar user bisa klik play manual
+                iframeKiri.closest('.video-wrapper').classList.add('is-loaded');
+                iframeKanan.closest('.video-wrapper').classList.add('is-loaded');
             });
         }
     }
@@ -137,5 +145,150 @@ function initializePlayers() {
 }
 
 
-// WAJIB: Hanya panggil ini sekali setelah semua fungsi didefinisikan
-document.addEventListener('DOMContentLoaded', initializePlayers);
+// ---------------------------------------------
+// 3. INJEKSI DELAY (FIX FREEZE AWAL)
+// ---------------------------------------------
+
+// Fungsi pembungkus untuk memulai semua script berat
+function startEverything() {
+    initSmoothScroll(); 
+    initializePlayers();
+}
+
+// Tunda inisiasi Lenis dan Vimeo API selama 1 detik (1000ms)
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(startEverything, 1000); 
+});
+
+
+// teks acak scramble halo faiz //
+
+const TARGET_ELEMENT = document.getElementById('halo');
+const FINAL_TEXT = "Halo, Saya Faiz";
+
+const CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-';
+
+// PENGATURAN KECEPATAN SHUFFLE (Cepat)
+const FRAME_DURATION = 15;  // Kecepatan pergantian frame
+const SHUFFLE_STEPS = 10;   // Durasi langkah acak per karakter
+
+// PENGATURAN LOOP DAN FADE-OUT
+const PAUSE_DURATION = 1500;    // Jeda (ms) setelah teks penuh, sebelum fade-out
+const FADE_OUT_DURATION = 300;  // Total durasi fade-out (ms)
+const FADE_OUT_STEPS = 10;      // Jumlah langkah fade-out
+
+function randomChar() {
+    return CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
+}
+
+// ------------------------------------
+// FUNGSI UTAMA SHUFFLE (Fade-In di dalamnya)
+// ------------------------------------
+function startScramble(callback) {
+    let frame = 0;
+    const queue = [];
+    const TOTAL_FRAMES = FINAL_TEXT.length * SHUFFLE_STEPS; 
+    
+    // Inisialisasi antrian shuffle
+    for (let i = 0; i < FINAL_TEXT.length; i++) {
+        const value = FINAL_TEXT[i];
+        const delay = SHUFFLE_STEPS * i;
+
+        queue.push({ 
+            finalChar: value, 
+            startFrame: delay, 
+            endFrame: delay + SHUFFLE_STEPS 
+        });
+    }
+
+    // Loop animasi
+    const update = () => {
+        let output = '';
+        let charactersCompleted = 0;
+
+        for (let i = 0; i < queue.length; i++) {
+            let item = queue[i];
+
+            if (frame >= item.endFrame) {
+                output += item.finalChar;
+                charactersCompleted++;
+            } else if (frame >= item.startFrame) {
+                output += randomChar();
+            } else {
+                output += ' ';
+            }
+        }
+
+        TARGET_ELEMENT.textContent = output;
+        
+        // Hitung Opacity (Fade-In)
+        let opacity_progress = frame / TOTAL_FRAMES;
+        if (opacity_progress > 1.0) { opacity_progress = 1.0; }
+        TARGET_ELEMENT.style.opacity = opacity_progress;
+
+        // Lanjutkan jika belum selesai
+        if (charactersCompleted !== queue.length) {
+            frame++;
+            setTimeout(update, FRAME_DURATION);
+        } else {
+            // Animasi selesai, panggil callback (untuk melanjutkan ke Fade-Out)
+            TARGET_ELEMENT.style.opacity = '1';
+            TARGET_ELEMENT.textContent = FINAL_TEXT; 
+            if (callback) callback();
+        }
+    }
+
+    update();
+}
+
+// ------------------------------------
+// FUNGSI FADE-OUT
+// ------------------------------------
+function fadeOut(callback) {
+    let opacity = 1.0;
+    const stepAmount = 1.0 / FADE_OUT_STEPS;
+
+    function step() {
+        opacity -= stepAmount;
+        
+        if (opacity <= 0) {
+            TARGET_ELEMENT.style.opacity = 0;
+            // Penting: Reset text content agar shuffle berikutnya dimulai dari kosong
+            TARGET_ELEMENT.textContent = ''; 
+            if (callback) callback(); // Fade out selesai, panggil loop lagi
+            return;
+        }
+        
+        TARGET_ELEMENT.style.opacity = opacity;
+        
+        // Hitung delay per langkah fade-out
+        const stepDelay = FADE_OUT_DURATION / FADE_OUT_STEPS;
+        setTimeout(step, stepDelay);
+    }
+    
+    step();
+}
+
+// ------------------------------------
+// FUNGSI LOOPING UTAMA
+// ------------------------------------
+function loopAnimation() {
+    // 1. Mulai Shuffle (Fade-in terjadi selama shuffle)
+    startScramble(() => {
+        
+        // 2. Jeda sejenak agar teks bisa dibaca
+        setTimeout(() => {
+            
+            // 3. Mulai Fade-Out
+            fadeOut(() => {
+                
+                // 4. Setelah Fade-Out selesai (opacity 0), ulangi loop
+                loopAnimation();
+            });
+            
+        }, PAUSE_DURATION);
+    });
+}
+
+// Memulai fungsi saat seluruh HTML dimuat
+document.addEventListener('DOMContentLoaded', loopAnimation);
