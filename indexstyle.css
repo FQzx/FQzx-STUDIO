@@ -3,6 +3,32 @@ body {
     font-family: monospace;
 }
 
+body {
+    opacity: 0;
+    animation: pageFadeIn 1.2s ease-out forwards;
+}
+
+@keyframes pageFadeIn {
+    0% {
+        opacity: 0;
+        filter: blur(10px);
+        transform: scale(1.01);
+    }
+
+    100% {
+        opacity: 1;
+        filter: blur(0);
+        transform: scale(1);
+    }
+}
+
+html {
+  scroll-behavior: auto !important; 
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important; 
+}
 
 #wrapsall {
     width: 1250px;
@@ -750,3 +776,7 @@ a {
     margin-top: 10vh;
     margin-bottom: 5vh;
 }
+
+
+
+/*Tablet*/

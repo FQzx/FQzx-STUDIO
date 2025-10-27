@@ -1,22 +1,26 @@
-// sync-video.js - VERSI FINAL DENGAN DELAY DAN VISUAL LOADING
+// sync-video.js - VERSI FINAL LENGKAP DENGAN LENIS HASH FIX
+
+// Global variable untuk Lenis agar bisa diakses di fungsi lain
+let globalLenis; 
 
 // ---------------------------------------------
 // 1. INISIASI LENIS (SMOOTH SCROLL)
 // ---------------------------------------------
 function initSmoothScroll() {
-    // Cek apakah Lenis sudah dimuat (Wajib Link di HTML)
+    // Cek apakah Lenis sudah dimuat
     if (typeof Lenis === 'undefined') {
         console.warn("Lenis library not found. Smooth scroll dinonaktifkan.");
         return;
     }
     
-    const lenis = new Lenis({
-        duration: 1.2,      // Durasi scroll
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing effect
+    // Inisiasi lenis dan masukkan ke globalLenis
+    globalLenis = new Lenis({ 
+        duration: 1.2,      
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         direction: 'vertical', 
         gestureDirection: 'vertical',
         smooth: true,
-        mouseMultiplier: 0.4, // Sensitivitas mouse
+        mouseMultiplier: 0.4, 
         smoothTouch: false,
         touchMultiplier: 2,
         infinite: false,
@@ -24,16 +28,32 @@ function initSmoothScroll() {
 
     // Fungsi untuk memperbarui Lenis di setiap frame (Loop Animasi)
     function raf(time) {
-        lenis.raf(time);
+        globalLenis.raf(time);
         requestAnimationFrame(raf);
     }
-
     requestAnimationFrame(raf);
     console.log("Lenis Smooth Scroll Activated.");
-}
 
-// !!! DIHAPUS: initSmoothScroll();
-// Kita panggil di startEverything() agar ada delay.
+    // --- LOGIKA SCROLL SAAT KLIK LINK INTERNAL ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault(); 
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                globalLenis.scrollTo(targetElement, {
+                    duration: 1.5, 
+                    offset: -100     // Offset 100px di atas elemen
+                });
+            }
+        });
+    });
+    
+    // Logika Scroll dari Hash di luar halaman DIBIARKAN KOSONG di sini, 
+    // karena sudah ditangani di bagian 4 setelah inisiasi Lenis.
+}
 
 
 // ---------------------------------------------
@@ -161,7 +181,45 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-// teks acak scramble halo faiz //
+// ---------------------------------------------
+// 4. FIX HASH SCROLL DARI LUAR (JLEB FIX)
+// ---------------------------------------------
+
+const initialHash = window.location.hash;
+
+// Perlu segera memblokir perilaku default browser
+if (initialHash) {
+    // 1. Matikan hash di URL agar browser tidak lompat instan
+    history.replaceState(null, null, window.location.pathname); // Hapus hash dari URL
+    
+    // 2. Tambahkan event listener untuk menunggu Lenis siap (setelah DOMContentLoaded dan delay 1000ms)
+    document.addEventListener('DOMContentLoaded', () => {
+        // Penundaan total: 1000ms (startEverything) + 50ms (Jeda aman setelah Lenis hidup)
+        setTimeout(() => {
+            const targetElement = document.querySelector(initialHash);
+            
+            // Cek kalau Lenis dan target ada
+            if (targetElement && globalLenis) {
+                 // Perintahkan Lenis scroll ke target yang kita blokir tadi
+                globalLenis.scrollTo(targetElement, {
+                    duration: 1.5,
+                    offset: -100 
+                });
+                
+                console.log(`[HASH FIX] Smooth scroll ke ${initialHash} berhasil.`);
+            }
+            
+            // Kembalikan hash ke URL setelah scroll dimulai (untuk bookmark)
+            history.pushState(null, null, initialHash);
+
+        }, 1050); 
+    });
+}
+
+
+// ---------------------------------------------
+// 5. TEKS ACAL SCRAMBLE HALO FAIZ
+// ---------------------------------------------
 
 const TARGET_ELEMENT = document.getElementById('halo');
 const FINAL_TEXT = "Halo, Saya Faiz";
@@ -169,21 +227,19 @@ const FINAL_TEXT = "Halo, Saya Faiz";
 const CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-';
 
 // PENGATURAN KECEPATAN SHUFFLE (Cepat)
-const FRAME_DURATION = 15;  // Kecepatan pergantian frame
-const SHUFFLE_STEPS = 10;   // Durasi langkah acak per karakter
+const FRAME_DURATION = 15;  
+const SHUFFLE_STEPS = 10;   
 
 // PENGATURAN LOOP DAN FADE-OUT
-const PAUSE_DURATION = 1500;    // Jeda (ms) setelah teks penuh, sebelum fade-out
-const FADE_OUT_DURATION = 300;  // Total durasi fade-out (ms)
-const FADE_OUT_STEPS = 10;      // Jumlah langkah fade-out
+const PAUSE_DURATION = 1500;    
+const FADE_OUT_DURATION = 300;  
+const FADE_OUT_STEPS = 10;      
 
 function randomChar() {
     return CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
 }
 
-// ------------------------------------
 // FUNGSI UTAMA SHUFFLE (Fade-In di dalamnya)
-// ------------------------------------
 function startScramble(callback) {
     let frame = 0;
     const queue = [];
@@ -241,9 +297,7 @@ function startScramble(callback) {
     update();
 }
 
-// ------------------------------------
 // FUNGSI FADE-OUT
-// ------------------------------------
 function fadeOut(callback) {
     let opacity = 1.0;
     const stepAmount = 1.0 / FADE_OUT_STEPS;
@@ -269,9 +323,7 @@ function fadeOut(callback) {
     step();
 }
 
-// ------------------------------------
 // FUNGSI LOOPING UTAMA
-// ------------------------------------
 function loopAnimation() {
     // 1. Mulai Shuffle (Fade-in terjadi selama shuffle)
     startScramble(() => {
@@ -292,56 +344,3 @@ function loopAnimation() {
 
 // Memulai fungsi saat seluruh HTML dimuat
 document.addEventListener('DOMContentLoaded', loopAnimation);
-
-
-// ---------------------------------------------
-// 1. INISIASI LENIS (SMOOTH SCROLL)
-// ---------------------------------------------
-function initSmoothScroll() {
-    if (typeof Lenis === 'undefined') {
-        console.warn("Lenis library not found. Smooth scroll dinonaktifkan.");
-        return;
-    }
-    
-    const lenis = new Lenis({
-        duration: 1.2, 
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical', 
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 0.4, // Mungkin ini yang bikin scroll mouse lo 'aneh' (terlalu halus/lambat)
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-    });
-
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-    console.log("Lenis Smooth Scroll Activated.");
-
-    // --- KODE BARU UNTUK KLIK LINK #ABOUT (GANTI SCROLL MANUAL) ---
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            // Mencegah browser melakukan scroll instan bawaan
-            e.preventDefault(); 
-            
-            const targetId = this.getAttribute('href');
-            // Cek apakah target ada (misalnya: #about)
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                // Perintahkan Lenis untuk scroll ke target elemen
-                lenis.scrollTo(targetElement, {
-                    // Opsi tambahan Lenis (opsional)
-                    duration: 1.5, // Bisa diset lebih lambat dari default lenis
-                    offset: -180     // Jarak dari atas elemen
-                });
-            }
-        });
-    });
-    // -----------------------------------------------------------------
-
-}
