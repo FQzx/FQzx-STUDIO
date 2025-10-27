@@ -337,7 +337,7 @@ function initSmoothScroll() {
                 lenis.scrollTo(targetElement, {
                     // Opsi tambahan Lenis (opsional)
                     duration: 1.5, // Bisa diset lebih lambat dari default lenis
-                    offset: -200     // Jarak dari atas elemen
+                    offset: -180     // Jarak dari atas elemen
                 });
             }
         });
