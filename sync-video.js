@@ -292,3 +292,56 @@ function loopAnimation() {
 
 // Memulai fungsi saat seluruh HTML dimuat
 document.addEventListener('DOMContentLoaded', loopAnimation);
+
+
+// ---------------------------------------------
+// 1. INISIASI LENIS (SMOOTH SCROLL)
+// ---------------------------------------------
+function initSmoothScroll() {
+    if (typeof Lenis === 'undefined') {
+        console.warn("Lenis library not found. Smooth scroll dinonaktifkan.");
+        return;
+    }
+    
+    const lenis = new Lenis({
+        duration: 1.2, 
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        direction: 'vertical', 
+        gestureDirection: 'vertical',
+        smooth: true,
+        mouseMultiplier: 0.4, // Mungkin ini yang bikin scroll mouse lo 'aneh' (terlalu halus/lambat)
+        smoothTouch: false,
+        touchMultiplier: 2,
+        infinite: false,
+    });
+
+    function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    console.log("Lenis Smooth Scroll Activated.");
+
+    // --- KODE BARU UNTUK KLIK LINK #ABOUT (GANTI SCROLL MANUAL) ---
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            // Mencegah browser melakukan scroll instan bawaan
+            e.preventDefault(); 
+            
+            const targetId = this.getAttribute('href');
+            // Cek apakah target ada (misalnya: #about)
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                // Perintahkan Lenis untuk scroll ke target elemen
+                lenis.scrollTo(targetElement, {
+                    // Opsi tambahan Lenis (opsional)
+                    duration: 1.5, // Bisa diset lebih lambat dari default lenis
+                    offset: -200     // Jarak dari atas elemen
+                });
+            }
+        });
+    });
+    // -----------------------------------------------------------------
+
+}

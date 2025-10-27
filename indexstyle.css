@@ -3,6 +3,7 @@ body {
     font-family: monospace;
 }
 
+
 #wrapsall {
     width: 1250px;
     max-width: 100%;
@@ -164,12 +165,13 @@ p {
 #header {
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 #fqzx {
     color: white;
     font-size: 20px;
+    font-family: ModernBold;
 }
 
 #list {
@@ -317,7 +319,34 @@ a {
     padding-left: 5px;
 }
 
+/*Aboutme*/
 
+
+
+#about {
+    padding: 20px;
+    border-radius: 25px;
+    margin: auto;
+    margin-top: 20vh;
+    align-items: center;
+    display: flex;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    width: fit-content;
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+#aboutme {
+    flex: 5;
+}
+
+#myphoto {
+    height: 300px;
+    border-radius: 25px;
+    flex: 1;
+}
 
 
 
@@ -367,7 +396,7 @@ a {
     margin-left: 1vw;
     text-align: center;
     font-size: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -466,7 +495,7 @@ a {
     height: auto;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     background: rgba(255, 255, 255, 0.2);
     border-radius: 25px;
     padding: 10px;
@@ -518,7 +547,7 @@ a {
 /*All Projects*/
 
 #allpro {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     margin: 10vh auto 0 auto;
     text-align: center;
     background: rgba(255, 255, 255, 0.2);
@@ -575,28 +604,28 @@ a {
 }
 
 .form-main-title {
-    color: #ffffff; 
-    font-size: 2.5em; 
+    color: #ffffff;
+    font-size: 2.5em;
     font-weight: 700;
-    text-align: center; 
-    margin-bottom: 5px; 
+    text-align: center;
+    margin-bottom: 5px;
 }
 
 .form-subtitle {
-    color: #cccccc; 
-    font-size: 0.9em; 
-    text-align: center; 
-    margin-bottom: 25px; 
-    padding: 0 10px; 
+    color: #cccccc;
+    font-size: 0.9em;
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 0 10px;
 }
 
 .form-container {
     max-width: 600px;
     padding: 30px;
-    background: rgba(255, 255, 255, 0.2); 
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
-    backdrop-filter: blur(5px); 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
 }
 
 .contact-form label {
@@ -604,7 +633,7 @@ a {
     margin-top: 15px;
     margin-bottom: 5px;
     font-size: 1.1em;
-    color: #f0f0f0; 
+    color: #f0f0f0;
     font-weight: 500;
 }
 
@@ -613,26 +642,26 @@ a {
 .contact-form textarea {
     width: 100%;
     padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.5); 
+    border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 6px;
     box-sizing: border-box;
     font-size: 1em;
-    background-color: rgba(0, 0, 0, 0.3); 
+    background-color: rgba(0, 0, 0, 0.3);
     color: #ffffff;
-    resize: vertical; 
+    resize: vertical;
 }
 
 .contact-form ::placeholder {
     color: #bbb;
-    opacity: 0.8; 
+    opacity: 0.8;
 }
 
 .submit-button {
     display: block;
-    width: 100%; 
+    width: 100%;
     padding: 15px;
     margin-top: 30px;
-    background-color: #007bff; 
+    background-color: #007bff;
     color: white;
     font-size: 1.1em;
     font-weight: bold;
@@ -643,16 +672,17 @@ a {
 }
 
 .submit-button:hover {
-    background-color: #0056b3; 
+    background-color: #0056b3;
 }
 
 @media (max-width: 768px) {
     .form-main-title {
         font-size: 2em;
     }
+
     .form-container {
-         margin: 5vh 10px 30px 10px;
-         padding: 20px;
+        margin: 5vh 10px 30px 10px;
+        padding: 20px;
     }
 }
 
@@ -677,7 +707,7 @@ a {
     align-items: center;
     margin-top: 10vh;
     position: relative;
-    display: inline-block;  
+    display: inline-block;
     transition: color 0.5s ease;
 }
 
@@ -714,9 +744,9 @@ a {
 
 /*copyright*/
 #copyright {
-  color: white;
-  text-align: center;
-  margin-bottom: 1%;
-  margin-top: 10vh;
-  margin-bottom: 5vh;
+    color: white;
+    text-align: center;
+    margin-bottom: 1%;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
 }
