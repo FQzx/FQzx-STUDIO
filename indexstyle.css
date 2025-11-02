@@ -821,7 +821,349 @@ a {
 
 /*Tablet*/
 
-@media screen and (max-width: 992px) {}
+@media screen and (max-width: 992px) {
+
+    #header {
+        width: 350px;
+        padding: unset;
+        margin: unset;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 20px;
+    }
+
+    #brand {
+        gap: 5px;
+        margin: unset;
+        padding: unset;
+        margin-bottom: 15px;
+    }
+
+    #brandlogo {
+        margin: unset;
+    }
+
+    #fqzx {
+        text-align: center;
+        margin: unset;
+        padding: unset;
+        font-size: 15px;
+    }
+
+    #list ul {
+        gap: 7px;
+        margin: unset;
+        padding: unset;
+    }
+
+    /*Header*/
+
+
+
+    /*Into*/
+
+    #opening {
+        flex-direction: column;
+        margin: unset;
+        padding: unset;
+        margin-top: 40%;
+        margin-left: 5%;
+        margin-right: 5%;
+        display: block;
+    }
+
+    #halo {
+        flex: none;
+        font-size: 25px;
+        margin: unset;
+        text-align: left;
+    }
+
+    #me {
+        flex: none;
+        margin: unset;
+        padding: unset;
+        margin-top: 50px;
+        font-size: 10px;
+        max-width: 100%;
+        text-align: justify;
+    }
+
+    #title {
+        font-size: 7px;
+    }
+
+    #intro {
+        display: flex;
+        flex-direction: column;
+        margin: unset;
+        padding: unset;
+    }
+
+
+    /*Content*/
+
+    #mobilecontent {
+        display: contents;
+        margin-bottom: 10%;
+    }
+
+    #ig {
+        height: 17px;
+        padding-bottom: 5px;
+    }
+
+    #github {
+        height: 27px;
+    }
+
+    #email {
+        height: 22px;
+        padding-left: 5px;
+        padding-bottom: 3px;
+    }
+
+    #content {
+        display: none;
+    }
+
+
+
+    /*My works*/
+
+    #mobilemyworks {
+        margin-top: 10px;
+        color: white;
+        font-size: 10px;
+        margin-top: 8px;
+        position: relative;
+        display: inline-block;
+        transition: color 0.5s ease;
+    }
+
+    #mobilemyworks::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        width: 0;
+        height: 2px;
+        background-color: #00ffff;
+        transition: width 0.5s ease-out;
+    }
+
+    #mobilemyworks:hover::after {
+        width: 100%;
+    }
+
+    #mobilemyworks:hover {
+        color: #00ffff;
+    }
+
+
+    #header ul li:has(a[href="#about"]) {
+        display: none !important;
+    }
+
+    /*About*/
+    #about {
+        display: none;
+    }
+
+    /*Competen*/
+
+    #titlecompetence {
+        margin: unset;
+        padding: unset;
+        font-size: small;
+        margin-top: 10%;
+        margin-left: 5%;
+        font-size: 10px;
+    }
+
+    #main {
+        display: contents;
+        margin: unset;
+        padding: unset;
+    }
+
+    #competence {
+        margin: unset;
+        padding: unset;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 5%;
+        max-width: 100%;
+        font-size: 10px;
+    }
+
+
+    #skills {
+        max-width: 100%;
+        margin: auto;
+        align-items: center;
+        gap: 5px;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 5%;
+    }
+
+    #point {
+        font-size: 7px;
+        margin-top: 5%;
+        white-space: nowrap;
+        margin: unset;
+    }
+
+
+    /*Proof*/
+
+    #projects {
+        font-size: 10px;
+    }
+
+    #projectsexplain {
+        font-size: 10px;
+        max-width: 410px;
+        margin: unset;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin: auto;
+    }
+
+    #videocontent {
+        flex-direction: column;
+    }
+
+
+    /*EmailMe*/
+
+    #contact {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+
+    .form-container {
+        margin: auto;
+        margin-top: 80px;
+    }
+
+    .form-main-title {
+        color: #ffffff;
+        font-size: 10px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .form-subtitle {
+        color: #cccccc;
+        font-size: 10px;
+        text-align: center;
+        margin-bottom: 25px;
+        padding: 0 10px;
+    }
+
+    .form-container {
+        max-width: 600px;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(5px);
+    }
+
+    .contact-form label {
+        display: block;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        font-size: 10px;
+        color: #f0f0f0;
+        font-weight: 500;
+    }
+
+    .contact-form input[type="text"],
+    .contact-form input[type="email"],
+    .contact-form textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: #ffffff;
+        resize: vertical;
+    }
+
+    .contact-form ::placeholder {
+        color: #bbb;
+        opacity: 0.8;
+    }
+
+    .submit-button {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        margin-top: 30px;
+        background-color: #007bff;
+        color: white;
+        font-size: 15px;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+        background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+        .form-main-title {
+            font-size: 2em;
+        }
+
+        .form-container {
+            margin: 40px 10px 30px 10px;
+            padding: 20px;
+        }
+    }
+
+    /*view all*/
+
+    #allpro {
+        margin: unset;
+        padding: unset;
+        margin: auto;
+        padding: 20px;
+    }
+
+    #allprojects {
+        margin: unset;
+        padding: unset;
+        font-size: 15px;
+    }
+
+    #allprojectsexplain {
+        margin: unset;
+        padding: unset;
+        margin-top: 5%;
+        font-size: 10px;
+        max-width: 330px;
+
+    }
+
+    #copyright {
+        font-size: 10px;
+    }
+
+}
 
 
 /*Mobile*/
