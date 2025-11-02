@@ -23,11 +23,11 @@ body {
 }
 
 html {
-    scroll-behavior: auto !important; 
+  scroll-behavior: auto !important; 
 }
 
 .lenis.lenis-smooth {
-    scroll-behavior: auto !important; 
+  scroll-behavior: auto !important; 
 }
 
 #wrapsall {
@@ -38,15 +38,6 @@ html {
     margin: 0 auto;
     overflow: hidden;
     position: relative;
-}
-
-
-/*Shadow Text*/
-body, h1, h2, h3, p, a, span {
-    color: #FFFFFF; 
-    mix-blend-mode: normal !important; 
-    text-shadow: 
-        1px 1px 5px rgba(0, 0, 0, 0.7); 
 }
 
 p {
@@ -227,7 +218,7 @@ p {
     background: rgba(255, 255, 255, 0.2);
     width: 600px;
     margin: auto;
-    margin-top: 64px;
+    margin-top: 5vw;
     border-radius: 50px;
 }
 
@@ -266,9 +257,9 @@ p {
     display: flex;
     gap: 30px;
     align-items: center;
-    padding-left: 128px;
-    padding-right: 128px;
-    margin-top: 160px;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    margin-top: 20vh;
 }
 
 #halo {
@@ -283,7 +274,7 @@ p {
 }
 
 #me {
-    padding-top: 120px;
+    padding-top: 15vh;
     flex: 3;
     color: white;
     text-align: justify;
@@ -305,8 +296,8 @@ p {
 #myworks {
     color: white;
     font-size: 15px;
-    margin-left: 128px;
-    margin-top: 8px;
+    margin-left: 10vw;
+    margin-top: 1vh;
     position: relative;
     display: inline-block;
     transition: color 0.5s ease;
@@ -339,17 +330,17 @@ a {
 }
 
 #ig {
-    padding-top: 12px;
+    padding-top: 1.5vh;
     height: 20px;
 }
 
 #github {
-    padding-top: 12px;
+    padding-top: 1.5vh;
     height: 30px;
 }
 
 #email {
-    padding-top: 12px;
+    padding-top: 1.5vh;
     height: 25px;
     padding-left: 5px;
 }
@@ -362,11 +353,11 @@ a {
     padding: 20px;
     border-radius: 25px;
     margin: auto;
-    margin-top: 160px;
+    margin-top: 20vh;
     align-items: center;
     display: flex;
-    margin-left: 128px;
-    margin-right: 128px;
+    margin-left: 10vw;
+    margin-right: 10vw;
     width: fit-content;
     gap: 20px;
     background: rgba(255, 255, 255, 0.2);
@@ -381,7 +372,6 @@ a {
     height: 300px;
     border-radius: 25px;
     flex: 1;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -390,8 +380,8 @@ a {
 
 #titlecompetence {
     color: white;
-    padding-left: 128px;
-    padding-top: 160px;
+    padding-left: 10vw;
+    padding-top: 20vh;
 }
 
 #main {
@@ -401,7 +391,7 @@ a {
 }
 
 #competence {
-    margin-left: 128px;
+    margin-left: 10vw;
     flex: 3;
     text-align: justify;
 }
@@ -410,7 +400,7 @@ a {
     flex: 5;
     display: flex;
     align-items: center;
-    margin-right: 128px;
+    margin-right: 10vw;
 }
 
 #skills a:hover span {
@@ -429,7 +419,7 @@ a {
     border-radius: 50px;
     width: fit-content;
     padding: 10px;
-    margin-left: 13px;
+    margin-left: 1vw;
     text-align: center;
     font-size: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -442,7 +432,7 @@ a {
 
 #projectsstyle {
     margin: auto;
-    margin-top: 120px;
+    margin-top: 15vh;
     align-items: center;
 }
 
@@ -450,7 +440,7 @@ a {
     margin: auto;
     justify-content: center;
     text-align: center;
-    margin-top: 80px;
+    margin-top: 10vh;
 }
 
 #projectsexplain {
@@ -461,7 +451,7 @@ a {
 }
 
 #proff {
-    margin-top: 40px;
+    margin-top: 5vh;
     gap: 20px;
     align-items: center;
 }
@@ -477,18 +467,18 @@ a {
     border-radius: 25px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 40px;
+    padding-top: 5vh;
     padding-bottom: 10px;
     gap: 20px;
 }
 
 #video-kanan {
     border-radius: 25px;
-    padding-right: 13px;
+    padding-right: 1vw;
 }
 
 .video-title-right {
-    margin-left: 13px;
+    margin-left: 1vw;
 }
 
 #video-kiri {
@@ -584,7 +574,7 @@ a {
 
 #allpro {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    margin: 80px auto 0 auto;
+    margin: 10vh auto 0 auto;
     text-align: center;
     background: rgba(255, 255, 255, 0.2);
     width: fit-content;
@@ -594,7 +584,7 @@ a {
 
 #allprojectsexplain {
     width: 700px;
-    padding-top: 32px;
+    padding-top: 4vh;
 }
 
 #allprojects {
@@ -636,7 +626,7 @@ a {
 
 .form-container {
     margin: auto;
-    margin-top: 80px;
+    margin-top: 10vh;
 }
 
 .form-main-title {
@@ -717,7 +707,7 @@ a {
     }
 
     .form-container {
-        margin: 40px 10px 30px 10px;
+        margin: 5vh 10px 30px 10px;
         padding: 20px;
     }
 }
@@ -741,7 +731,7 @@ a {
     margin: auto;
     justify-content: center;
     align-items: center;
-    margin-top: 80px;
+    margin-top: 10vh;
     position: relative;
     display: inline-block;
     transition: color 0.5s ease;
@@ -783,11 +773,10 @@ a {
     color: white;
     text-align: center;
     margin-bottom: 1%;
-    margin-top: 80px;
-    margin-bottom: 40px;
+    margin-top: 10vh;
+    margin-bottom: 5vh;
 }
 
 
 
 /*Tablet*/
-

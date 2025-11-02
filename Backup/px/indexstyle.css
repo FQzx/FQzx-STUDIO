@@ -40,15 +40,6 @@ html {
     position: relative;
 }
 
-
-/*Shadow Text*/
-body, h1, h2, h3, p, a, span {
-    color: #FFFFFF; 
-    mix-blend-mode: normal !important; 
-    text-shadow: 
-        1px 1px 5px rgba(0, 0, 0, 0.7); 
-}
-
 p {
     color: rgba(255, 255, 255, 0.50);
     mix-blend-mode: screen;
@@ -381,7 +372,6 @@ a {
     height: 300px;
     border-radius: 25px;
     flex: 1;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 
@@ -790,4 +780,3 @@ a {
 
 
 /*Tablet*/
-
