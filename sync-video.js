@@ -344,3 +344,5 @@ function loopAnimation() {
 
 // Memulai fungsi saat seluruh HTML dimuat
 document.addEventListener('DOMContentLoaded', loopAnimation);
+
+
