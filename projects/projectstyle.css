@@ -29,6 +29,13 @@ body, h1, h2, h3, p, a, span {
         1px 1px 5px rgba(0, 0, 0, 0.7); 
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%; 
+    overflow-x: hidden;
+}
+
 #all {
     width: 1250px;
     max-width: 100%;

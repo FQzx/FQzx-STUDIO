@@ -3,6 +3,10 @@ body {
     font-family: monospace;
 }
 
+#proff {
+    display: none;
+}
+
 html,
 body {
     margin: 0;
@@ -245,6 +249,8 @@ p {
     margin: auto;
     margin-top: 64px;
     border-radius: 50px;
+    padding-top: 3px;
+    padding-bottom: 3px;
 }
 
 #brand {
@@ -284,27 +290,98 @@ p {
     align-items: center;
     padding-left: 128px;
     padding-right: 128px;
-    margin-top: 160px;
+    margin-top: 180px;
 }
 
 #halo {
     font-family: ModernBold;
     opacity: 0;
-
+    letter-spacing: 3px;
 }
 
 #intro {
-    flex: 2;
     color: white;
+}
+
+#introduce {
+    width: 400px;
 }
 
 #me {
-    padding-top: 120px;
-    flex: 3;
+    margin-left: 20px;
+    margin-right: 128px;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
     color: white;
     text-align: justify;
+    text-align: center;
 }
 
+#title {
+    font-family: ModernBold;
+    letter-spacing: 3px;
+    animation: fadeShift 3s ease-in-out infinite;
+}
+
+@keyframes fadeShift {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: translateY(0);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
+}
+
+
+#title2 {
+    padding-left: 5px;
+    padding-top: 3.5px;
+}
+
+
+#flexintro {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+
+/*Opening Skills*/
+#openingskills {
+    display: flex;
+    align-items: center;
+    margin-right: 128px;
+    white-space: nowrap;
+    padding: unset;
+    margin: unset;
+    gap: 5px;
+}
+
+#openingskills a:hover span {
+    color: #00ffff;
+}
+
+#openingskills a span {
+    color: rgba(255, 255, 255, 0.7);
+    transition: color 0.5s ease;
+}
+
+#openingpoint {
+    background: rgba(255, 255, 255, 0.2);
+    width: 600px;
+    border-radius: 50px;
+    width: fit-content;
+    padding: 10px;
+    text-align: center;
+    font-size: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
 
 
 /*Mobile*/
@@ -313,14 +390,13 @@ p {
     display: none;
 }
 
-
-#mobilecontent {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-
+#mobileabout {
+    display: none;
 }
 
+#mobilemyworks {
+    display: none;
+}
 
 
 /*Content*/
@@ -329,7 +405,7 @@ p {
     display: flex;
     gap: 20px;
     align-items: center;
-
+    margin-top: 50px;
 }
 
 #myworks {
@@ -340,6 +416,22 @@ p {
     position: relative;
     display: inline-block;
     transition: color 0.5s ease;
+    font-family: ModernBold;
+    animation: fadeShift 3s ease-in-out infinite;
+}
+
+@keyframes fadeShift {
+
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: translateY(0);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
 }
 
 #myworks::after {
@@ -384,15 +476,21 @@ a {
     padding-left: 5px;
 }
 
+
+
+
 /*Aboutme*/
 
-
+#who {
+    margin-top: 160px;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
 #about {
     padding: 20px;
     border-radius: 25px;
     margin: auto;
-    margin-top: 160px;
     align-items: center;
     display: flex;
     margin-left: 128px;
@@ -412,6 +510,10 @@ a {
     border-radius: 25px;
     flex: 1;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+#explainabout {
+    font-size: 12px;
 }
 
 
@@ -704,14 +806,31 @@ a {
 }
 
 .contact-form input[type="text"],
-.contact-form input[type="email"],
+.contact-form input[type="email"] {
+    width: 100%;
+    height: 50px !important;
+    padding: 0 12px !important;
+
+    display: flex !important;
+    align-items: center !important;
+
+    line-height: normal !important;
+
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 10px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+}
+
 .contact-form textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 6px;
     box-sizing: border-box;
-    font-size: 1em;
+    font-size: 10px;
     background-color: rgba(0, 0, 0, 0.3);
     color: #ffffff;
     resize: vertical;
@@ -720,6 +839,7 @@ a {
 .contact-form ::placeholder {
     color: #bbb;
     opacity: 0.8;
+    text-align: center;
 }
 
 .submit-button {
@@ -1087,7 +1207,24 @@ a {
     }
 
     .contact-form input[type="text"],
-    .contact-form input[type="email"],
+    .contact-form input[type="email"] {
+        width: 100%;
+        height: 50px !important;
+        padding: 0 12px !important;
+
+        display: flex !important;
+        align-items: center !important;
+
+        line-height: normal !important;
+
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: #ffffff;
+    }
+
     .contact-form textarea {
         width: 100%;
         padding: 12px;
@@ -1319,6 +1456,11 @@ a {
     }
 
     /*About*/
+
+    #who {
+        display: none;
+    }
+
     #about {
         display: none;
     }
@@ -1435,7 +1577,24 @@ a {
     }
 
     .contact-form input[type="text"],
-    .contact-form input[type="email"],
+    .contact-form input[type="email"] {
+        width: 100%;
+        height: 50px !important;
+        padding: 0 12px !important;
+
+        display: flex !important;
+        align-items: center !important;
+
+        line-height: normal !important;
+
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 10px;
+        background-color: rgba(0, 0, 0, 0.3);
+        color: #ffffff;
+    }
+
     .contact-form textarea {
         width: 100%;
         padding: 12px;
