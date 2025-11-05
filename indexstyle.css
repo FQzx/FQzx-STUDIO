@@ -1,6 +1,8 @@
 body {
     background: radial-gradient(circle at 30% 30%, #0c1629, #040816 70%);
     font-family: monospace;
+    opacity: 0;
+    animation: pageFadeIn 1.2s ease-out forwards;
 }
 
 html,
@@ -9,11 +11,6 @@ body {
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-}
-
-body {
-    opacity: 0;
-    animation: pageFadeIn 1.2s ease-out forwards;
 }
 
 @keyframes pageFadeIn {
@@ -89,11 +86,11 @@ p {
 
 /* Lapisan lava */
 .lava-wrapper {
-    position: absolute; 
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100%; 
+    height: 100%;
     overflow: hidden;
     z-index: -1;
     filter: blur(90px);
@@ -306,7 +303,7 @@ p {
 #me {
     margin-left: 20px;
     margin-right: 128px;
-    padding-top: 30px;
+    padding-top: 23px;
     display: flex;
     flex-direction: column;
     color: white;
@@ -345,6 +342,10 @@ p {
     display: flex;
     text-align: center;
     justify-content: center;
+}
+
+#mobileflexintro {
+    display: none;
 }
 
 
@@ -540,6 +541,7 @@ a {
     display: flex;
     align-items: center;
     margin-right: 128px;
+    white-space: nowrap;
 }
 
 #skills a:hover span {
@@ -1306,7 +1308,7 @@ a {
 @media screen and (max-width: 480px) {
 
     #header {
-        width: 350px;
+        width: 300px;
         padding: unset;
         margin: unset;
         margin: auto;
@@ -1337,26 +1339,75 @@ a {
     }
 
     #list ul {
-        gap: 7px;
+        gap: 8px;
         margin: unset;
         padding: unset;
     }
 
-    /*Header*/
+    /*EndHeader*/
 
 
 
-    /*Into*/
+    /*Intro Settings*/
 
     #opening {
         flex-direction: column;
         margin: unset;
         padding: unset;
-        margin-top: 40%;
+        margin-top: 60%;
         margin-left: 5%;
         margin-right: 5%;
         display: block;
     }
+
+    #flexintro {
+        display: none;
+    }
+
+    #mobileflexintro {
+        display: flex;
+        margin: unset;
+        padding: unset;
+        flex-direction: row;
+        text-align: center;
+    }
+
+    #mobiletitle {
+        font-family: ModernBold;
+        width: auto important;
+        font-size: 10px;
+        letter-spacing: 1px;
+        padding-top: 5px;
+        animation: fadeShift 3s ease-in-out infinite;
+    }
+
+    @keyframes fadeShift {
+
+        0%,
+        100% {
+            opacity: 0.6;
+            transform: translateY(0);
+        }
+
+        10% {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
+    }
+
+
+    #mobiletitle2 {
+        padding-left: 5px;
+    }
+
+    #introduce {
+        width: 100%;
+    }
+
+    #openingskills {
+        display: none;
+    }
+
 
     #halo {
         flex: none;
@@ -1367,9 +1418,7 @@ a {
 
     #me {
         flex: none;
-        margin: unset;
-        padding: unset;
-        margin-top: 50px;
+        margin-top: 30px;
         font-size: 10px;
         max-width: 100%;
         text-align: justify;
@@ -1387,11 +1436,12 @@ a {
     }
 
 
+
     /*Content*/
 
     #mobilecontent {
         display: contents;
-        margin-bottom: 10%;
+        margin-bottom: 5%;
     }
 
     #ig {
@@ -1421,10 +1471,26 @@ a {
         margin-top: 10px;
         color: white;
         font-size: 10px;
-        margin-top: 8px;
+        margin-top: 15%;
         position: relative;
         display: inline-block;
+        font-family: ModernBold;
         transition: color 0.5s ease;
+        animation: fadeShift 3s ease-in-out infinite;
+    }
+
+    @keyframes fadeShift {
+
+        0%,
+        100% {
+            opacity: 0.6;
+            transform: translateY(0);
+        }
+
+        10% {
+            opacity: 1;
+            transform: translateY(-2px);
+        }
     }
 
     #mobilemyworks::after {
@@ -1468,9 +1534,9 @@ a {
         margin: unset;
         padding: unset;
         font-size: small;
-        margin-top: 10%;
+        margin-top: 5%;
         margin-left: 5%;
-        font-size: 10px;
+        font-size: 13px;
     }
 
     #main {
@@ -1486,7 +1552,7 @@ a {
         margin-right: 5%;
         margin-top: 5%;
         max-width: 100%;
-        font-size: 10px;
+        font-size: 11px;
     }
 
 
@@ -1498,6 +1564,7 @@ a {
         margin-left: 5%;
         margin-right: 5%;
         margin-top: 5%;
+        flex-wrap: wrap;
     }
 
     #point {
@@ -1505,13 +1572,20 @@ a {
         margin-top: 5%;
         white-space: nowrap;
         margin: unset;
+        font-size: 10px;
     }
 
 
     /*Proof*/
 
+    #projectsstyle {
+        margin-top: 50px;
+    }
+
     #projects {
         font-size: 10px;
+        margin: unset;
+        padding: unset;
     }
 
     #projectsexplain {
