@@ -279,7 +279,6 @@ p {
 
 #opening {
     display: flex;
-    gap: 30px;
     align-items: center;
     padding-left: 128px;
     padding-right: 128px;
@@ -290,6 +289,7 @@ p {
     font-family: ModernBold;
     opacity: 0;
     letter-spacing: 3px;
+    margin: unset;
 }
 
 #intro {
@@ -297,7 +297,9 @@ p {
 }
 
 #introduce {
-    width: 400px;
+    width: 500px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 #me {
@@ -312,6 +314,10 @@ p {
 }
 
 #title {
+    margin: unset;
+    padding: unset;
+    padding-top: 11px;
+    font-size: 10px;
     font-family: ModernBold;
     letter-spacing: 3px;
     animation: fadeShift 3s ease-in-out infinite;
@@ -334,50 +340,91 @@ p {
 
 #title2 {
     padding-left: 5px;
-    padding-top: 3.5px;
+    font-size: 10px;
 }
 
 
 #flexintro {
     display: flex;
     text-align: center;
-    justify-content: center;
 }
 
-#mobileflexintro {
+#proff {
     display: none;
 }
 
+/*Kolase*/
 
-/*Opening Skills*/
-#openingskills {
-    display: flex;
-    align-items: center;
-    margin-right: 128px;
-    white-space: nowrap;
-    padding: unset;
-    margin: unset;
-    gap: 5px;
-}
+.kolase1 img:nth-child(1) { animation-delay: 0s; }
+.kolase2 img:nth-child(2) { animation-delay: 0.2s; }
+.kolase3 img:nth-child(3) { animation-delay: 0.4s; }
 
-#openingskills a:hover span {
-    color: #00ffff;
-}
-
-#openingskills a span {
-    color: rgba(255, 255, 255, 0.7);
-    transition: color 0.5s ease;
-}
-
-#openingpoint {
-    background: rgba(255, 255, 255, 0.2);
-    width: 600px;
-    border-radius: 50px;
+.kolase1 {
+    position: absolute;
+    gap: 10px;
     width: fit-content;
+    margin-left: 55%;
+    margin-bottom: 200px;
+    z-index: 3;
+    transform: rotate(8deg) scale(0.8);
+}
+
+.kolase2 {
+    position: absolute;
+    gap: 10px;
+    width: fit-content;
+    margin-left: 62%;
+    margin-top: 25px;
+    z-index: 2;
+    transform: scale(0.8);
+}
+
+.kolase3 {
+    position: absolute;
+    gap: 10px;
+    width: fit-content;
+    margin-left: 55%;
+    margin-top: 250px;
+    z-index: 1;
+    transform: rotate(-8deg) scale(0.8);
+}
+
+.style {
+    background: rgba(255, 255, 255, 0.2);
+    width: fit-content;
+    border-radius: 15px;
+    padding-bottom: 5px;
+    margin: auto;
+}
+
+#like {
+    height: 20px;
+    margin-left: 10px;
+}
+
+#attribute {
+    display: flex;
+}
+
+
+/*Pict Style*/
+#content1 {
     padding: 10px;
-    text-align: center;
-    font-size: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    height: 200px;
+    border-radius: 25px;
+}
+
+#content2 {
+    padding: 10px;
+    height: 200px;
+    width: 150px;
+    border-radius: 25px;
+}
+
+#content3 {
+    padding: 10px;
+    height: 200px;
+    border-radius: 25px;
 }
 
 
@@ -714,13 +761,10 @@ a {
 /*All Projects*/
 
 #allpro {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     margin: 80px auto 0 auto;
     text-align: center;
-    background: rgba(255, 255, 255, 0.2);
-    width: fit-content;
-    padding: 20px;
     border-radius: 25px;
+    font-family: ModernBold;
 }
 
 #allprojectsexplain {
@@ -1360,26 +1404,6 @@ a {
         display: block;
     }
 
-    #flexintro {
-        display: none;
-    }
-
-    #mobileflexintro {
-        display: flex;
-        margin: unset;
-        padding: unset;
-        flex-direction: row;
-        text-align: center;
-    }
-
-    #mobiletitle {
-        font-family: ModernBold;
-        width: auto important;
-        font-size: 10px;
-        letter-spacing: 1px;
-        padding-top: 5px;
-        animation: fadeShift 3s ease-in-out infinite;
-    }
 
     @keyframes fadeShift {
 
@@ -1395,10 +1419,6 @@ a {
         }
     }
 
-
-    #mobiletitle2 {
-        padding-left: 5px;
-    }
 
     #introduce {
         width: 100%;
