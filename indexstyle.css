@@ -20,6 +20,18 @@ html, body {
     overflow-x: hidden;
 }
 
+
+html, sbody {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
+}
+
+
 @keyframes pageFadeIn {
     0% {
         opacity: 0;
