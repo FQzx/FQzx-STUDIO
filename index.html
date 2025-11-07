@@ -194,8 +194,7 @@
 
                     <iframe id="video-kiri" class="vimeo-sync-player"
                         src="https://player.vimeo.com/video/1130094353?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;controls=0&amp;background=1"
-                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write;"
-                        title="Video Kiri">
+                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write;" title="LOG">
                     </iframe>
                 </div>
 
@@ -205,7 +204,7 @@
                     <iframe id="video-kanan" class="vimeo-sync-player"
                         src="https://player.vimeo.com/video/1130094306?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;controls=0&amp;background=1"
                         frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write;"
-                        title="Video Kanan"></iframe>
+                        title="COLOR GRADE"></iframe>
                 </div>
             </div>
             <div id="allpro">
@@ -261,6 +260,21 @@
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="sync-video.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const iframes = document.querySelectorAll(".lazy-vimeo");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.src = entry.target.dataset.src;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            iframes.forEach(iframe => observer.observe(iframe));
+        });
+    </script>
     <script>
         (function () {
             function applyFade() {

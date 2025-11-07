@@ -1529,7 +1529,8 @@ a {
 
     #mobilecontent {
         display: contents;
-        margin-bottom: 5%;
+        margin: unset;
+        padding: unset;
     }
 
     #ig {
@@ -1556,10 +1557,9 @@ a {
     /*My works*/
 
     #mobilemyworks {
-        margin-top: 10px;
         color: white;
         font-size: 10px;
-        margin-top: 15%;
+        margin-top: 25px;
         margin-bottom: 10px;
         position: relative;
         display: inline-block;
