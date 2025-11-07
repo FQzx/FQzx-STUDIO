@@ -437,10 +437,12 @@ a {
         padding-top: 15px;
         padding-left: 10px;
         padding-right: 10px;
-        margin: auto;
-        margin-top: 10%;
-        margin-left: 10%;
-        margin-right: 10%;
+        margin: 10% auto 0 auto;
+        gap: unset;
+    }
+
+    #faiz {
+        clip-path: circle(39%);
     }
 
     #competence {
@@ -530,7 +532,12 @@ a {
         padding-right: 10px;
         margin: auto;
         margin-top: 10%;
+        gap: unset;
 
+    }
+
+    #faiz {
+        clip-path: circle(39%);
     }
 
     #competence {
