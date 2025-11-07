@@ -844,6 +844,7 @@ a {
     font-weight: 700;
     text-align: center;
     margin-bottom: 5px;
+    font-family: ModernBold;
 }
 
 .form-subtitle {
@@ -1386,6 +1387,10 @@ a {
         transition: none !important;
     }
 
+    .lava-wrapper {
+        display: none;
+    }
+
     #header {
         width: 300px;
         padding: unset;
@@ -1437,6 +1442,7 @@ a {
         margin-left: 5%;
         margin-right: 5%;
         display: block;
+        font-size: 12px;
     }
 
 
@@ -1453,7 +1459,6 @@ a {
             transform: translateY(-2px);
         }
     }
-
 
     #introduce {
         width: 100%;
@@ -1636,7 +1641,7 @@ a {
         margin-right: 5%;
         margin-top: 5%;
         max-width: 100%;
-        font-size: 11px;
+        font-size: 12px;
     }
 
 
@@ -1673,11 +1678,11 @@ a {
     }
 
     #projectsexplain {
-        font-size: 10px;
-        max-width: 410px;
+        font-size: 12px;
+        width: 90%;
         margin: unset;
-        margin-left: 5%;
-        margin-right: 5%;
+        margin-left: 10%;
+        margin-right: 10%;
         margin: auto;
     }
 
