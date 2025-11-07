@@ -2,11 +2,18 @@ body {
     background: radial-gradient(circle at 30% 30%, #0c1629, #040816 70%);
     font-family: monospace;
     opacity: 0;
-    animation: pageFadeIn 1.2s ease-out forwards;
+    transform: scale(1.01);
+    filter: blur(10px);
+    transition: opacity 1.2s ease-out, transform 1.2s ease-out, filter 1.2s ease-out;
 }
 
-html,
-body {
+body.page-loaded {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+}
+
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
@@ -349,15 +356,7 @@ p {
     text-align: center;
 }
 
-#proff {
-    display: none;
-}
-
 /*Kolase*/
-
-.kolase1 img:nth-child(1) { animation-delay: 0s; }
-.kolase2 img:nth-child(2) { animation-delay: 0.2s; }
-.kolase3 img:nth-child(3) { animation-delay: 0.4s; }
 
 .kolase1 {
     position: absolute;
@@ -404,6 +403,8 @@ p {
 
 #attribute {
     display: flex;
+    align-items: center;
+    gap: 3px;
 }
 
 
@@ -461,6 +462,7 @@ p {
     display: inline-block;
     transition: color 0.5s ease;
     font-family: ModernBold;
+    letter-spacing: 3px;
     animation: fadeShift 3s ease-in-out infinite;
 }
 
@@ -529,6 +531,8 @@ a {
     margin-top: 160px;
     text-align: center;
     margin-bottom: 20px;
+    font-family: ModernBold;
+    letter-spacing: 3px;
 }
 
 #about {
@@ -568,6 +572,8 @@ a {
     color: white;
     margin-left: 150px;
     margin-top: 20px;
+    font-family: ModernBold;
+    letter-spacing: 3px;
 }
 
 #main {
@@ -629,6 +635,8 @@ a {
     justify-content: center;
     text-align: center;
     margin-top: 80px;
+    font-family: ModernBold;
+    letter-spacing: 3px;
 }
 
 #projectsexplain {
@@ -765,6 +773,7 @@ a {
     text-align: center;
     border-radius: 25px;
     font-family: ModernBold;
+    letter-spacing: 3px;
 }
 
 #allprojectsexplain {
@@ -778,7 +787,6 @@ a {
     color: white;
     transition: color 0.5s ease;
     text-align: center;
-
     font-size: 15px;
 }
 
@@ -937,6 +945,8 @@ a {
     margin-top: 80px;
     position: relative;
     display: inline-block;
+    font-family: ModernBold;
+    letter-spacing: 3px;
     transition: color 0.5s ease;
 }
 
@@ -1221,6 +1231,8 @@ a {
         font-size: 10px;
         text-align: center;
         margin-bottom: 5px;
+        font-family: ModernBold;
+        letter-spacing: 3px;
     }
 
     .form-subtitle {

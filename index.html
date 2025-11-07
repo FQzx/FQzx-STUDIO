@@ -64,28 +64,35 @@
             <div class="kolase1">
                 <div class="style">
                     <a href="www.whatsapp.com">
-                        <img src="files/Portfolio/foto/Bunga.webp" alt="bunga" id="content1">
+                        <img src="files/Portfolio/foto/Bunga.webp" alt="bunga" id="content1" loading="lazy">
                     </a>
                     <div id="attribute">
                         <img src="files/Logo/Love.png" alt="like" id="like">
+                        <p class="infor"><span class="bold"> F</span>lower</p>
                     </div>
                 </div>
             </div>
 
             <div class="kolase2">
                 <div class="style">
-                    <img src="files/Portfolio/foto/Tugu.webp" alt="bunga" id="content2">
+                    <a href="www.whatsapp.com">
+                        <img src="files/Portfolio/foto/Tugu.webp" alt="bunga" id="content2" loading="lazy">
+                    </a>
                     <div id="attribute">
                         <img src="files/Logo/Love.png" alt="like" id="like">
+                        <p class="infor"><span class="bold"> T</span>ugu Jogja</p>
                     </div>
                 </div>
             </div>
 
             <div class="kolase3">
                 <div class="style">
-                    <img src="files/Portfolio/foto/Solo.webp" alt="bunga" id="content3">
+                    <a href="www.whatsapp.com">
+                        <img src="files/Portfolio/foto/Solo.webp" alt="bunga" id="content3" loading="lazy">
+                    </a>
                     <div id="attribute">
                         <img src="files/Logo/Love.png" alt="like" id="like">
+                        <p class="infor"><span class="bold"> M</span>asjid</p>
                     </div>
                 </div>
             </div>
@@ -124,7 +131,7 @@
 
         <h3 id="who">About Me</h3>
         <div id="about">
-            <img src="files/Photo/faiz.png" alt="me" id="myphoto">
+            <img src="files/Photo/faiz.png" alt="me" id="myphoto" loading="lazy">
             <h3 id="aboutme">
                 <p id="explainabout">Perkenalkan saya <span class="bold">Faiz Wahyu Setiawan</span>, seorang kreator
                     visual
@@ -254,6 +261,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="sync-video.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("page-loaded");
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.classList.add("page-loaded");
+            window.scrollTo(0, 0);
+        });
+    </script>
 </body>
 </div>
 
