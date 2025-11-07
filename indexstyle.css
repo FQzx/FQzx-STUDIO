@@ -1762,37 +1762,43 @@ a {
     #who {
         display: flex;
         font-size: 13px;
+        margin: unset;
         margin-top: 35px;
-        text-align: center;
-        justify-content: center;
+        justify-content: left;
+        margin-left: 5%;
     }
 
     #about {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         margin: unset;
         padding: unset;
-        margin: auto;
         margin-left: 5%;
         margin-right: 5%;
-        padding-top: 25px;
+        background-color: unset;
+        box-shadow: unset;
+        gap: unset;
+    }
+
+    #aboutme {
+        margin: unset;
+        padding: unset;
     }
 
     #explainabout {
-        text-align: center;
+        text-align: left;
         margin: unset;
         padding: unset;
-        padding-left: 10px;
-        padding-right: 10px;
-        font-size: 12px;
+        padding-right: 3%;
+        font-size: 10px;
     }
 
     #myphoto {
-        height: 150px;
-        width: 150px;
+        height: 130px;
+        width: 120px;
         margin: unset;
         padding: unset;
+        margin-right: auto;
+        clip-path: circle(39%);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     }
 
     #header ul li:has(a[href="#about"]) {
