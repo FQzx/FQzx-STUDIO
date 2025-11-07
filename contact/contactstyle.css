@@ -22,18 +22,36 @@ body {
 }
 
 /*Shadow Text*/
-body, h1, h2, h3, p, a, span {
-    color: #FFFFFF; 
-    mix-blend-mode: normal !important; 
-    text-shadow: 
-        1px 1px 5px rgba(0, 0, 0, 0.7); 
+body,
+h1,
+h2,
+h3,
+p,
+a,
+span {
+    color: #FFFFFF;
+    mix-blend-mode: normal !important;
+    text-shadow:
+        1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
-    width: 100%; 
+    width: 100%;
     overflow-x: hidden;
+}
+
+html,
+body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
 }
 
 #all {
@@ -71,11 +89,11 @@ p {
 
 /* Lapisan lava */
 .lava-wrapper {
-    position: absolute; 
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100%; 
+    height: 100%;
     overflow: hidden;
     z-index: -1;
     filter: blur(90px);
@@ -226,6 +244,7 @@ p {
     margin: auto;
     margin-top: 64px;
     border-radius: 50px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 #brand {
@@ -358,4 +377,179 @@ a {
     margin-bottom: 1%;
     margin-top: 80px;
     margin-bottom: 40px;
+}
+
+@media screen and (max-width: 992px) {
+
+    body {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+    }
+
+    #header {
+        width: 550px;
+        padding: unset;
+        margin: unset;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 20px;
+    }
+
+    #brand {
+        gap: 5px;
+        margin: unset;
+        padding: unset;
+        margin-bottom: 15px;
+    }
+
+    #brandlogo {
+        margin: unset;
+    }
+
+    #fqzx {
+        text-align: center;
+        margin: unset;
+        padding: unset;
+        font-size: 15px;
+    }
+
+    #list ul {
+        gap: 10px;
+        margin: unset;
+        padding: unset;
+    }
+
+    /*EndHeader*/
+
+    /*Main*/
+
+    #main {
+        margin: unset;
+        padding: unset;
+        width: 610px;
+        flex-direction: column;
+        padding-top: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: auto;
+        margin-top: 10%;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+
+    #competence {
+        font-size: 12px;
+        text-align: justify;
+        text-align-last: center;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    #skills {
+        flex-direction: row;
+        gap: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding-bottom: 15px;
+    }
+
+    #copyright {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    body {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+    }
+
+    .lava-wrapper {
+        display: none;
+    }
+
+    #header {
+        width: 350px;
+        padding: unset;
+        margin: unset;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 20px;
+    }
+
+    #brand {
+        gap: 5px;
+        margin: unset;
+        padding: unset;
+        margin-bottom: 15px;
+    }
+
+    #brandlogo {
+        margin: unset;
+    }
+
+    #fqzx {
+        text-align: center;
+        margin: unset;
+        padding: unset;
+        font-size: 15px;
+    }
+
+    #list ul {
+        gap: 10px;
+        margin: unset;
+        padding: unset;
+    }
+
+    /*EndHeader*/
+
+    /*Main*/
+
+    #main {
+        margin: unset;
+        padding: unset;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 310px;
+        flex-direction: column;
+        padding-top: 15px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: auto;
+        margin-top: 10%;
+
+    }
+
+    #competence {
+        font-size: 12px;
+        text-align: justify;
+        text-align-last: center;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    #skills {
+        flex-direction: inherit;
+        gap: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+        padding-bottom: 15px;
+    }
+
+    #copyright {
+        font-size: 10px;
+    }
 }

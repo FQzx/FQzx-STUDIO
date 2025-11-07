@@ -21,11 +21,23 @@ body {
     }
 }
 
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
-    width: 100%; 
+    width: 100%;
     overflow-x: hidden;
+}
+
+html,
+body {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;
 }
 
 #all {
@@ -39,11 +51,17 @@ html, body {
 }
 
 /*Shadow Text*/
-body, h1, h2, h3, p, a, span {
-    color: #FFFFFF; 
-    mix-blend-mode: normal !important; 
-    text-shadow: 
-        1px 1px 5px rgba(0, 0, 0, 0.7); 
+body,
+h1,
+h2,
+h3,
+p,
+a,
+span {
+    color: #FFFFFF;
+    mix-blend-mode: normal !important;
+    text-shadow:
+        1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 
 p {
@@ -71,11 +89,11 @@ p {
 
 /* Lapisan lava */
 .lava-wrapper {
-    position: absolute; 
+    position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100%; 
+    height: 100%;
     overflow: hidden;
     z-index: -1;
     filter: blur(90px);
@@ -311,8 +329,9 @@ a {
 
 .expsoftware {
     text-align: center;
-    width: 700px;
+    max-width: 700px;
     margin-left: auto;
+
 }
 
 .settingsoftware {
@@ -395,4 +414,265 @@ a {
     margin-bottom: 1%;
     margin-top: 80px;
     margin-bottom: 40px;
+}
+
+@media screen and (max-width: 992px) {
+    body {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+    }
+
+    #header {
+        width: 550px;
+        padding: unset;
+        margin: unset;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 20px;
+    }
+
+    #brand {
+        gap: 5px;
+        margin: unset;
+        padding: unset;
+        margin-bottom: 15px;
+    }
+
+    #brandlogo {
+        margin: unset;
+    }
+
+    #fqzx {
+        text-align: center;
+        margin: unset;
+        padding: unset;
+        font-size: 15px;
+    }
+
+    #list ul {
+        gap: 10px;
+        margin: unset;
+        padding: unset;
+    }
+
+    /*EndHeader*/
+
+    #title {
+        font-size: 15px;
+        letter-spacing: 3px;
+    }
+
+    #titleex {
+        font-size: 12px;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 510px;
+        text-align: center;
+        margin: auto;
+        margin-bottom: 10%;
+        margin-top: 5%;
+    }
+
+    /*End Intro*/
+
+    .box {
+        margin-right: 10%;
+        margin-left: 10%;
+        padding: 10px;
+        width: 650px;
+        margin: auto;
+        margin-top: 5px;
+        border-radius: 10px;
+    }
+
+    .expsoftware {
+        display: none;
+    }
+
+    .name {
+        margin: unset;
+        padding: unset;
+        letter-spacing: 1px;
+        font-size: 13px;
+    }
+
+    /*Logo Settings*/
+    #logodav {
+        height: 55px;
+    }
+
+    #logoprem {
+        height: 50px;
+        padding: unset;
+    }
+
+    #logofixed {
+        height: 50px;
+        padding: unset;
+        margin: unset;
+        border-radius: 10px !important;
+    }
+
+    #logofixed2 {
+        height: 40px;
+        margin: unset;
+        padding: unset;
+        padding: 5px;
+        border-radius: 10px !important;
+    }
+
+    #logokine {
+        height: 50px;
+        margin: unset;
+        padding: unset;
+        border-radius: 10px !important;
+    }
+
+    #logoins {
+        height: 55px;
+        margin: unset;
+        padding: unset;
+    }
+
+    #copyright {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    body {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        transition: none !important;
+    }
+
+    #header {
+        width: 350px;
+        padding: unset;
+        margin: unset;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-top: 20px;
+    }
+
+    #brand {
+        gap: 5px;
+        margin: unset;
+        padding: unset;
+        margin-bottom: 15px;
+    }
+
+    #brandlogo {
+        margin: unset;
+    }
+
+    #fqzx {
+        text-align: center;
+        margin: unset;
+        padding: unset;
+        font-size: 15px;
+    }
+
+    #list ul {
+        gap: 10px;
+        margin: unset;
+        padding: unset;
+    }
+
+    /*EndHeader*/
+
+    #title {
+        font-size: 15px;
+        letter-spacing: 3px;
+    }
+
+    #titleex {
+        font-size: 12px;
+        margin-left: 10%;
+        margin-right: 10%;
+        width: 310px;
+        text-align: center;
+        margin-bottom: 10%;
+        margin: auto;
+        margin-bottom: 10%;
+        margin-top: 5%;
+    }
+
+    /*End Intro*/
+
+    .box {
+        margin-right: 10%;
+        margin-left: 10%;
+        padding: 10px;
+        width: 250px;
+        margin: auto;
+        margin-top: 5px;
+        border-radius: 10px;
+    }
+
+    .expsoftware {
+        display: none;
+    }
+
+    .name {
+        margin: unset;
+        padding: unset;
+        letter-spacing: 1px;
+        font-size: 13px;
+    }
+
+    /*Logo Settings*/
+    #logodav {
+        height: 55px;
+    }
+
+    #logoprem {
+        height: 50px;
+        padding: unset;
+    }
+
+    #logofixed {
+        height: 50px;
+        padding: unset;
+        margin: unset;
+        border-radius: 10px !important;
+    }
+
+    #logofixed2 {
+        height: 40px;
+        margin: unset;
+        padding: unset;
+        padding: 5px;
+        border-radius: 10px !important;
+    }
+
+    #logokine {
+        height: 50px;
+        margin: unset;
+        padding: unset;
+        border-radius: 10px !important;
+    }
+
+    #logoins {
+        height: 55px;
+        margin: unset;
+        padding: unset;
+    }
+
+    #copyright {
+        font-size: 10px;
+    }
+
 }
