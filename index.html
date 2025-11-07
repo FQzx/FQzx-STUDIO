@@ -262,16 +262,25 @@
     <script src="https://player.vimeo.com/api/player.js"></script>
     <script src="sync-video.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("page-loaded");
-        });
+        (function () {
+            function applyFade() {
+                try { window.scrollTo(0, 0); } catch (e) { }
+                document.body.classList.remove('page-loaded');
+                void document.body.offsetWidth;
+                setTimeout(() => document.body.classList.add('page-loaded'), 60);
+            }
+
+            document.addEventListener('DOMContentLoaded', applyFade);
+            window.addEventListener('pageshow', (evt) => {
+                if (evt.persisted) {
+                    applyFade();
+                } else {
+                    applyFade();
+                }
+            });
+        })();
     </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.body.classList.add("page-loaded");
-            window.scrollTo(0, 0);
-        });
-    </script>
+
 </body>
 </div>
 
