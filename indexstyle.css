@@ -1021,7 +1021,7 @@ a {
     }
 
     #header {
-        width: 300px;
+        width: 400px;
         padding: unset;
         margin: unset;
         margin: auto;
@@ -1262,11 +1262,43 @@ a {
     /*About*/
 
     #who {
-        display: none;
+        display: flex;
+        font-size: 13px;
+        margin-top: 35px;
+        text-align: center;
+        justify-content: center;
     }
 
     #about {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: unset;
+        padding: unset;
+        margin: auto;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-top: 25px;
+    }
+
+    #explainabout {
+        text-align: center;
+        margin: unset;
+        padding: unset;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 12px;
+    }
+
+    #myphoto {
+        height: 150px;
+        width: 150px;
+        margin: unset;
+        padding: unset;
+    }
+
+    #header ul li:has(a[href="#about"]) {
+        display: contents !important;
     }
 
     /*Competen*/
@@ -1491,7 +1523,7 @@ a {
     }
 
     #header {
-        width: 300px;
+        width: 350px;
         padding: unset;
         margin: unset;
         margin: auto;
@@ -1725,18 +1757,46 @@ a {
     }
 
 
-    #header ul li:has(a[href="#about"]) {
-        display: none !important;
-    }
-
     /*About*/
 
     #who {
-        display: none;
+        display: flex;
+        font-size: 13px;
+        margin-top: 35px;
+        text-align: center;
+        justify-content: center;
     }
 
     #about {
-        display: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: unset;
+        padding: unset;
+        margin: auto;
+        margin-left: 5%;
+        margin-right: 5%;
+        padding-top: 25px;
+    }
+
+    #explainabout {
+        text-align: center;
+        margin: unset;
+        padding: unset;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 12px;
+    }
+
+    #myphoto {
+        height: 150px;
+        width: 150px;
+        margin: unset;
+        padding: unset;
+    }
+
+    #header ul li:has(a[href="#about"]) {
+        display: contents !important;
     }
 
     /*Competen*/
