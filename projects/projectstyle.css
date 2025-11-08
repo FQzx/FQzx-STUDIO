@@ -695,6 +695,10 @@ a {
         margin: auto;
     }
 
+    .portoexp {
+    display: none;
+    }
+
 
     /*Pic Settings*/
     #photo {
