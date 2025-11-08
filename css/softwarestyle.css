@@ -425,7 +425,7 @@ a {
     }
 
     #header {
-        width: 550px;
+        width: 350px;
         padding: unset;
         margin: unset;
         margin: auto;
@@ -472,11 +472,13 @@ a {
         font-size: 12px;
         margin-left: 10%;
         margin-right: 10%;
-        width: 510px;
+        width: 310px;
         text-align: center;
+        margin-bottom: 10%;
         margin: auto;
         margin-bottom: 10%;
         margin-top: 5%;
+        width: 600px;
     }
 
     /*End Intro*/
@@ -485,10 +487,13 @@ a {
         margin-right: 10%;
         margin-left: 10%;
         padding: 10px;
-        width: 650px;
+        width: fit-content;
         margin: auto;
         margin-top: 5px;
-        border-radius: 10px;
+        border-radius: 25px;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 15px;
     }
 
     .name {
@@ -499,7 +504,7 @@ a {
     }
 
     #copyright {
-        font-size: 15px;
+        font-size: 10px;
     }
 }
 
