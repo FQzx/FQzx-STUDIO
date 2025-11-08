@@ -491,53 +491,11 @@ a {
         border-radius: 10px;
     }
 
-    .expsoftware {
-        display: none;
-    }
-
     .name {
         margin: unset;
         padding: unset;
         letter-spacing: 1px;
         font-size: 13px;
-    }
-
-    /*Logo Settings*/
-    #logodav {
-        height: 55px;
-    }
-
-    #logoprem {
-        height: 50px;
-        padding: unset;
-    }
-
-    #logofixed {
-        height: 50px;
-        padding: unset;
-        margin: unset;
-        border-radius: 10px !important;
-    }
-
-    #logofixed2 {
-        height: 40px;
-        margin: unset;
-        padding: unset;
-        padding: 5px;
-        border-radius: 10px !important;
-    }
-
-    #logokine {
-        height: 50px;
-        margin: unset;
-        padding: unset;
-        border-radius: 10px !important;
-    }
-
-    #logoins {
-        height: 55px;
-        margin: unset;
-        padding: unset;
     }
 
     #copyright {
