@@ -615,7 +615,9 @@ a {
     display: flex;
     align-items: center;
     margin-right: 128px;
+    flex-wrap: wrap;
     white-space: nowrap;
+    gap: 5px;
 }
 
 #skills a:hover span {
@@ -1588,7 +1590,7 @@ a {
         margin-left: 5%;
         margin-right: 5%;
         display: block;
-        font-size: 12px;
+        font-size: 13px;
     }
 
 
@@ -1614,10 +1616,10 @@ a {
         display: none;
     }
 
-
+   
     #halo {
         flex: none;
-        font-size: 25px;
+        font-size: 30px;
         margin: unset;
         text-align: left;
     }
@@ -1631,7 +1633,15 @@ a {
     }
 
     #title {
-        font-size: 7px;
+        font-size: 9px;
+        padding-top: 15px;
+        white-space: nowrap;
+    }
+
+    #title2 {
+        font-size: 12px;
+        white-space: nowrap;
+        margin-right: 5px;
     }
 
     #intro {
@@ -1646,14 +1656,14 @@ a {
     .kolase1 {
         margin: unset;
         top: 0;
-        top: 4%;
+        top: 3%;
         left: 45%;
         transform: translateX(-50%) scale(0.5) rotate(8deg);
     }
 
     .kolase2 {
         top: 0;
-        top: 6%;
+        top: 5%;
         margin: unset;
         left: 60%;
         transform: translateX(-50%) scale(0.5);
@@ -1661,7 +1671,7 @@ a {
 
     .kolase3 {
         top: 0;
-        top: 9%;
+        top: 8%;
         margin: unset;
         left: 45%;
         transform: translateX(-50%) scale(0.5) rotate(-8deg);
@@ -1728,8 +1738,8 @@ a {
     #mobilemyworks {
         color: white;
         font-size: 10px;
-        margin-top: 30px;
-        margin-bottom: 10px;
+        margin-top: 1px;
+        margin-bottom: 15px;
         position: relative;
         display: inline-block;
         font-family: ModernBold;
@@ -1808,7 +1818,7 @@ a {
         margin: unset;
         padding: unset;
         padding-right: 3%;
-        font-size: 10px;
+        font-size: 13px;
     }
 
     #myphoto {
@@ -1849,7 +1859,7 @@ a {
         margin-right: 5%;
         margin-top: 5%;
         max-width: 100%;
-        font-size: 12px;
+        font-size: 13px;
     }
 
 
@@ -1865,7 +1875,7 @@ a {
     }
 
     #point {
-        font-size: 7px;
+        font-size: 10px;
         margin-top: 5%;
         white-space: nowrap;
         margin: unset;
@@ -1886,7 +1896,7 @@ a {
     }
 
     #projectsexplain {
-        font-size: 12px;
+        font-size: 13px;
         width: 90%;
         margin: unset;
         margin-left: 10%;
@@ -1920,7 +1930,7 @@ a {
 
     .form-subtitle {
         color: #cccccc;
-        font-size: 10px;
+        font-size: 12px;
         text-align: center;
         margin-bottom: 25px;
         padding: 0 10px;
