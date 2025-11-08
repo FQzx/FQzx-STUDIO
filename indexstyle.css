@@ -471,7 +471,7 @@ p {
 
 #myworks {
     color: white;
-    font-size: 15px;
+    font-size: 12px;
     margin-left: 128px;
     margin-top: 8px;
     position: relative;
@@ -480,6 +480,10 @@ p {
     font-family: ModernBold;
     letter-spacing: 3px;
     animation: fadeShift 3s ease-in-out infinite;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 25px;
 }
 
 @keyframes fadeShift {
@@ -499,8 +503,9 @@ p {
 #myworks::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
+    bottom: 7px;
+    left: 9px;
+
 
     width: 0;
     height: 2px;
@@ -509,7 +514,7 @@ p {
 }
 
 #myworks:hover::after {
-    width: 100%;
+    width: 80%;
 }
 
 #myworks:hover {
@@ -790,6 +795,11 @@ a {
     border-radius: 25px;
     font-family: ModernBold;
     letter-spacing: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+    border-radius: 25px;
+    width: fit-content;
 }
 
 #allprojectsexplain {
@@ -803,7 +813,7 @@ a {
     color: white;
     transition: color 0.5s ease;
     text-align: center;
-    font-size: 15px;
+    font-size: 13px;
 }
 
 #allpro a:hover {
@@ -1187,7 +1197,7 @@ a {
 
     #mobileig {
         height: 17px;
-        margin-bottom: 4px;
+        margin-bottom: 5px;
     }
 
     #mobilegithub {
@@ -1197,7 +1207,7 @@ a {
     #mobileemail {
         height: 22px;
         padding-left: 5px;
-        margin-bottom: 1px;
+        margin-bottom: 2px;
     }
 
     #content {
@@ -1218,6 +1228,10 @@ a {
         font-family: ModernBold;
         transition: color 0.5s ease;
         animation: fadeShift 3s ease-in-out infinite;
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        border-radius: 25px;
     }
 
     @keyframes fadeShift {
@@ -1237,8 +1251,9 @@ a {
     #mobilemyworks::after {
         content: '';
         position: absolute;
-        bottom: 0;
-        left: 0;
+        bottom: 7px;
+        left: 9px;
+
 
         width: 0;
         height: 2px;
@@ -1247,7 +1262,7 @@ a {
     }
 
     #mobilemyworks:hover::after {
-        width: 100%;
+        width: 75%;
     }
 
     #mobilemyworks:hover {
@@ -1689,7 +1704,7 @@ a {
 
     #mobileig {
         height: 17px;
-        margin-bottom: 4px;
+        margin-bottom: 5px;
     }
 
     #mobilegithub {
@@ -1699,7 +1714,7 @@ a {
     #mobileemail {
         height: 22px;
         padding-left: 5px;
-        margin-bottom: 1px;
+        margin-bottom: 2px;
     }
 
     #content {
@@ -1720,6 +1735,10 @@ a {
         font-family: ModernBold;
         transition: color 0.5s ease;
         animation: fadeShift 3s ease-in-out infinite;
+        background: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        padding: 10px;
+        border-radius: 25px;
     }
 
     @keyframes fadeShift {
@@ -1739,8 +1758,9 @@ a {
     #mobilemyworks::after {
         content: '';
         position: absolute;
-        bottom: 0;
-        left: 0;
+        bottom: 7px;
+        left: 9px;
+
 
         width: 0;
         height: 2px;
@@ -1749,7 +1769,7 @@ a {
     }
 
     #mobilemyworks:hover::after {
-        width: 100%;
+        width: 75%;
     }
 
     #mobilemyworks:hover {
@@ -1985,13 +2005,16 @@ a {
         margin: unset;
         padding: unset;
         margin: auto;
-        padding: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     #allprojects {
         margin: unset;
         padding: unset;
-        font-size: 15px;
+        font-size: 10px;
     }
 
     #allprojectsexplain {
