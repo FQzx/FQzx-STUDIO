@@ -568,6 +568,10 @@ a {
         -webkit-overflow-scrolling: touch;
     }
 
+    .lava-wrapper {
+        display: none;
+    }
+
     #header {
         width: 350px;
         padding: unset;
