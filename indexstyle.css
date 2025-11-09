@@ -7,6 +7,10 @@ body {
     transition: opacity 1.2s ease-out, transform 1.2s ease-out, filter 1.2s ease-out;
 }
 
+html, body {
+    scroll-behavior: smooth !important;
+}
+
 body.page-loaded {
     opacity: 1;
     transform: scale(1);
@@ -574,6 +578,7 @@ a {
 }
 
 #about {
+    scroll-margin-top: 80px;
     padding: 20px;
     border-radius: 25px;
     margin: auto;

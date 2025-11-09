@@ -1,54 +1,97 @@
-// Global variable untuk Lenis agar bisa diakses di fungsi lain
-let globalLenis; 
-document.addEventListener('DOMContentLoaded', initSmoothScroll);
-// ---------------------------------------------
-// 1. INISIASI LENIS (SMOOTH SCROLL)
-// ---------------------------------------------
+let globalLenis;
+const MOBILE_BREAKPOINT = 480;
+
+document.addEventListener('DOMContentLoaded', () => {
+    initSmoothScroll();
+    initMobileScrollAnimations();
+});
+
 function initSmoothScroll() {
-    // Cek apakah Lenis sudah dimuat
+    // Initialize Lenis on all devices so scroll feels consistent everywhere
     if (typeof Lenis === 'undefined') {
-        console.warn("Lenis library not found. Smooth scroll dinonaktifkan.");
         return;
     }
-    
-    // Inisiasi lenis dan masukkan ke globalLenis
-    globalLenis = new Lenis({ 
-        duration: 1.2,      
+
+    globalLenis = new Lenis({
+        duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical', 
+        direction: 'vertical',
         gestureDirection: 'vertical',
         smooth: true,
-        mouseMultiplier: 0.4, 
-        smoothTouch: false,
+        mouseMultiplier: 0.4,
+        smoothTouch: true,
         touchMultiplier: 2,
         infinite: false,
+        lerp: 0.1
     });
 
-    // Fungsi untuk memperbarui Lenis di setiap frame (Loop Animasi)
     function raf(time) {
         globalLenis.raf(time);
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-    console.log("Lenis Smooth Scroll Activated.");
 
-    // --- LOGIKA SCROLL SAAT KLIK LINK INTERNAL ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault(); 
-            
+            e.preventDefault();
+
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
 
-            if (targetElement) {
+            if (targetElement && globalLenis) {
                 globalLenis.scrollTo(targetElement, {
-                    duration: 1.5, 
-                    offset: -100     // Offset 100px di atas elemen
+                    duration: 1.5,
+                    offset: -100
                 });
+            } else if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
-    
-    // Logika Scroll dari Hash di luar halaman DIBIARKAN KOSONG di sini, 
-    // karena sudah ditangani di bagian 4 setelah inisiasi Lenis.
+}
+
+function initMobileScrollAnimations() {
+    if (window.innerWidth > MOBILE_BREAKPOINT) return;
+
+    const animatedSections = [
+        { selector: '#header', delay: 0 },
+        { selector: '#faiz', delay: 1 },
+        { selector: '#competence', delay: 2 },
+        { selector: '.box', delay: 1, multiple: true },
+        { selector: '#copyright', delay: 0 }
+    ];
+
+    const observerOptions = {
+        root: null,
+        threshold: 0.1,
+        rootMargin: '-20px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    animatedSections.forEach(section => {
+        const elements = section.multiple ? 
+            document.querySelectorAll(section.selector) :
+            [document.querySelector(section.selector)];
+
+        elements.forEach((el, index) => {
+            if (el) {
+                el.classList.add('scroll-reveal');
+                // For social media boxes, create staggered animation
+                if (section.selector === '.box') {
+                    el.classList.add(`scroll-delay-${index}`);
+                } else {
+                    el.classList.add(`scroll-delay-${section.delay}`);
+                }
+                observer.observe(el);
+            }
+        });
+    });
 }

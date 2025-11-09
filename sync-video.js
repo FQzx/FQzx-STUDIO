@@ -4,10 +4,7 @@ const MOBILE_BREAKPOINT = 480;
 document.addEventListener('DOMContentLoaded', loopAnimation);
 
 function initSmoothScroll() {
-    if (window.innerWidth <= MOBILE_BREAKPOINT) {
-        return;
-    }
-
+    // Remove mobile check to enable smooth scroll on all devices
     if (typeof Lenis === 'undefined') {
         return;
     }
@@ -19,9 +16,10 @@ function initSmoothScroll() {
         gestureDirection: 'vertical',
         smooth: true,
         mouseMultiplier: 0.4,
-        smoothTouch: false,
+        smoothTouch: true, // Enable smooth touch scrolling
         touchMultiplier: 2,
         infinite: false,
+        lerp: 0.1 // Add lerp for smoother interpolation
     });
 
     function raf(time) {
