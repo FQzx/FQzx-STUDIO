@@ -1,112 +1,93 @@
-// sync-video.js - VERSI FINAL LENGKAP DENGAN LENIS HASH FIX
+let globalLenis;
+const MOBILE_BREAKPOINT = 480;
 
-// Global variable untuk Lenis agar bisa diakses di fungsi lain
-let globalLenis; 
+document.addEventListener('DOMContentLoaded', loopAnimation);
 
-// ---------------------------------------------
-// 1. INISIASI LENIS (SMOOTH SCROLL)
-// ---------------------------------------------
 function initSmoothScroll() {
-    // Cek apakah Lenis sudah dimuat
-    if (typeof Lenis === 'undefined') {
-        console.warn("Lenis library not found. Smooth scroll dinonaktifkan.");
+    if (window.innerWidth <= MOBILE_BREAKPOINT) {
         return;
     }
-    
-    // Inisiasi lenis dan masukkan ke globalLenis
-    globalLenis = new Lenis({ 
-        duration: 1.2,      
+
+    if (typeof Lenis === 'undefined') {
+        return;
+    }
+
+    globalLenis = new Lenis({
+        duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical', 
+        direction: 'vertical',
         gestureDirection: 'vertical',
         smooth: true,
-        mouseMultiplier: 0.4, 
+        mouseMultiplier: 0.4,
         smoothTouch: false,
         touchMultiplier: 2,
         infinite: false,
     });
 
-    // Fungsi untuk memperbarui Lenis di setiap frame (Loop Animasi)
     function raf(time) {
         globalLenis.raf(time);
         requestAnimationFrame(raf);
     }
     requestAnimationFrame(raf);
-    console.log("Lenis Smooth Scroll Activated.");
 
-    // --- LOGIKA SCROLL SAAT KLIK LINK INTERNAL ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            e.preventDefault(); 
-            
+            e.preventDefault();
+
             const targetId = this.getAttribute('href');
             const targetElement = document.querySelector(targetId);
 
-            if (targetElement) {
+            if (targetElement && globalLenis) {
                 globalLenis.scrollTo(targetElement, {
-                    duration: 1.5, 
-                    offset: -100     // Offset 100px di atas elemen
+                    duration: 1.5,
+                    offset: -100
                 });
+            } else if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         });
     });
-    
-    // Logika Scroll dari Hash di luar halaman DIBIARKAN KOSONG di sini, 
-    // karena sudah ditangani di bagian 4 setelah inisiasi Lenis.
 }
-
-
-// ---------------------------------------------
-// 2. LOGIC SINKRONISASI VIDEO & ANTI-DRIFT
-// ---------------------------------------------
 
 let players = [];
 let syncInterval = null;
 
-// FUNGSI PENCEGAH DRIFT (ANTI-PERGESERAN WAKTU)
 function startDriftCheck() {
     if (syncInterval) clearInterval(syncInterval);
 
-    // Cek setiap 500ms (0.5 detik)
     syncInterval = setInterval(() => {
         if (players.length !== 2) return;
 
         Promise.all(players.map(p => p.getCurrentTime()))
-        .then(times => {
-            const timeKiri = times[0];
-            const timeKanan = times[1];
-            
-            // Batas Toleransi Drift: 0.1 detik
-            const drift = Math.abs(timeKiri - timeKanan);
+            .then(times => {
+                const timeKiri = times[0];
+                const timeKanan = times[1];
 
-            if (drift > 0.1) {
-                const syncTime = Math.min(timeKiri, timeKanan);
-                
-                // Paksa kedua video ke waktu terkecil (video yang paling lambat)
-                players.map(p => p.setCurrentTime(syncTime));
+                const drift = Math.abs(timeKiri - timeKanan);
 
-                console.warn(`[DRIFT] Dideteksi ${drift.toFixed(3)}s. Sinkronisasi paksa ke ${syncTime.toFixed(2)}s.`);
-            }
-        })
-        .catch(error => {
-            // Biarkan error jika player sedang buffering atau belum stabil
-        });
-    }, 500); 
+                if (drift > 0.1) {
+                    const syncTime = Math.min(timeKiri, timeKanan);
+
+                    players.map(p => p.setCurrentTime(syncTime));
+                }
+            })
+            .catch(error => {
+
+            });
+    }, 500);
 }
 
-// FUNGSI UTAMA: MENGINISIASI DAN SINKRONISASI AWAL
 function initializePlayers() {
     const iframeKiri = document.querySelector('#video-kiri');
     const iframeKanan = document.querySelector('#video-kanan');
 
     if (!iframeKiri || !iframeKanan || typeof Vimeo === 'undefined') {
-        // Coba inisiasi lagi setelah 200ms jika Vimeo API belum dimuat
         if (typeof Vimeo === 'undefined') {
-             setTimeout(initializePlayers, 200);
+            setTimeout(initializePlayers, 200);
         }
         return;
     }
-    
+
     const playerKiri = new Vimeo.Player(iframeKiri);
     const playerKanan = new Vimeo.Player(iframeKanan);
     players = [playerKiri, playerKanan];
@@ -117,46 +98,32 @@ function initializePlayers() {
         loadedCount++;
 
         if (loadedCount === 2) {
-            console.log("Kedua player siap (LOADED). Memaksa PLAY simultan.");
-
-            // 1. Memaksa play
             Promise.all(players.map(p => p.play()))
-            .then(() => {
-                // 2. Jeda 500ms untuk stabilisasi buffering
-                setTimeout(() => {
-                    // 3. Sinkronisasi waktu awal
-                    Promise.all(players.map(p => p.getCurrentTime()))
-                    .then(times => {
-                        const syncTime = Math.min(...times);
-                        
-                        Promise.all(players.map(p => p.setCurrentTime(syncTime)))
-                        .then(() => {
-                            // Tampilkan video secara simultan (Fade-in)
-                            iframeKiri.classList.add('is-ready');
-                            iframeKanan.classList.add('is-ready');
+                .then(() => {
+                    setTimeout(() => {
+                        Promise.all(players.map(p => p.getCurrentTime()))
+                            .then(times => {
+                                const syncTime = Math.min(...times);
 
-                            // HILANGKAN SKELETON LOADING (Tambahkan class is-loaded ke WRAPPER)
-                            iframeKiri.closest('.video-wrapper').classList.add('is-loaded');
-                            iframeKanan.closest('.video-wrapper').classList.add('is-loaded');
+                                Promise.all(players.map(p => p.setCurrentTime(syncTime)))
+                                    .then(() => {
+                                        iframeKiri.classList.add('is-ready');
+                                        iframeKanan.classList.add('is-ready');
 
-                            console.log(`[AWAL] Sinkronisasi Awal Selesai di ${syncTime.toFixed(2)}s. Loading Visual Dihapus.`);
-                            
-                            // 4. Mulai pengecekan anti-drift
-                            startDriftCheck(); 
-                        });
-                    });
-                }, 500); 
-            })
-            .catch(error => {
-                // Fallback: Tampilkan video walaupun mungkin autoplay diblokir
-                iframeKiri.classList.add('is-ready');
-                iframeKanan.classList.add('is-ready');
-                console.error("Gagal Autoplay. Blokir browser:", error);
+                                        iframeKiri.closest('.video-wrapper').classList.add('is-loaded');
+                                        iframeKanan.closest('.video-wrapper').classList.add('is-loaded');
 
-                // Hapus loading visual agar user bisa klik play manual
-                iframeKiri.closest('.video-wrapper').classList.add('is-loaded');
-                iframeKanan.closest('.video-wrapper').classList.add('is-loaded');
-            });
+                                        startDriftCheck();
+                                    });
+                            });
+                    }, 500);
+                })
+                .catch(error => {
+                    iframeKiri.classList.add('is-ready');
+                    iframeKanan.classList.add('is-ready');
+                    iframeKiri.closest('.video-wrapper').classList.add('is-loaded');
+                    iframeKanan.closest('.video-wrapper').classList.add('is-loaded');
+                });
         }
     }
 
@@ -164,96 +131,121 @@ function initializePlayers() {
     playerKanan.on('loaded', attemptToPlayAndSync);
 }
 
+function initMobileScrollAnimations() {
+    if (window.innerWidth > MOBILE_BREAKPOINT) return;
 
-// ---------------------------------------------
-// 3. INJEKSI DELAY (FIX FREEZE AWAL)
-// ---------------------------------------------
+    const animatedSections = [
+        { selector: '#header', delay: 0 },
+        { selector: '#intro', delay: 1 },
+        { selector: '#flexintro', delay: 2 },
+        { selector: '#content', delay: 1 },
+        { selector: '#who', delay: 0 },
+        { selector: '#about', delay: 1 },
+        { selector: '#titlecompetence', delay: 0 },
+        { selector: '#competence', delay: 1 },
+        { selector: '#skills a', delay: 2, multiple: true },
+        { selector: '#projects', delay: 0 },
+        { selector: '#projectsexplain', delay: 1 },
+        { selector: '#videocontent', delay: 2 },
+        { selector: '.form-container', delay: 1 },
+        { selector: '#wrapmed', delay: 2 },
+        { selector: '#copyright', delay: 3 }
+    ];
 
-// Fungsi pembungkus untuk memulai semua script berat
-function startEverything() {
-    initSmoothScroll(); 
-    initializePlayers();
-}
+    const observerOptions = {
+        root: null,
+        threshold: 0.1,
+        rootMargin: '-20px 0px'
+    };
 
-// Tunda inisiasi Lenis dan Vimeo API selama 1 detik (1000ms)
-document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(startEverything, 1000); 
-});
-
-
-// ---------------------------------------------
-// 4. FIX HASH SCROLL DARI LUAR (JLEB FIX)
-// ---------------------------------------------
-
-const initialHash = window.location.hash;
-
-// Perlu segera memblokir perilaku default browser
-if (initialHash) {
-    // 1. Matikan hash di URL agar browser tidak lompat instan
-    history.replaceState(null, null, window.location.pathname); // Hapus hash dari URL
-    
-    // 2. Tambahkan event listener untuk menunggu Lenis siap (setelah DOMContentLoaded dan delay 1000ms)
-    document.addEventListener('DOMContentLoaded', () => {
-        // Penundaan total: 1000ms (startEverything) + 50ms (Jeda aman setelah Lenis hidup)
-        setTimeout(() => {
-            const targetElement = document.querySelector(initialHash);
-            
-            // Cek kalau Lenis dan target ada
-            if (targetElement && globalLenis) {
-                 // Perintahkan Lenis scroll ke target yang kita blokir tadi
-                globalLenis.scrollTo(targetElement, {
-                    duration: 1.5,
-                    offset: -100 
-                });
-                
-                console.log(`[HASH FIX] Smooth scroll ke ${initialHash} berhasil.`);
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
             }
-            
-            // Kembalikan hash ke URL setelah scroll dimulai (untuk bookmark)
-            history.pushState(null, null, initialHash);
+        });
+    }, observerOptions);
 
-        }, 1050); 
+    animatedSections.forEach(section => {
+        const elements = section.multiple ? 
+            document.querySelectorAll(section.selector) :
+            [document.querySelector(section.selector)];
+
+        elements.forEach((el, index) => {
+            if (el) {
+                el.classList.add('scroll-reveal');
+                el.classList.add(`scroll-delay-${section.delay}`);
+                observer.observe(el);
+            }
+        });
     });
 }
 
+function startEverything() {
+    initSmoothScroll();
+    initializePlayers();
+    initMobileScrollAnimations();
+}
 
-// ---------------------------------------------
-// 5. TEKS ACAL SCRAMBLE HALO FAIZ
-// ---------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(startEverything, 1000);
+});
+
+const initialHash = window.location.hash;
+
+if (initialHash) {
+    history.replaceState(null, null, window.location.pathname);
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            const targetElement = document.querySelector(initialHash);
+
+            if (targetElement && globalLenis) {
+                globalLenis.scrollTo(targetElement, {
+                    duration: 1.5,
+                    offset: -100
+                });
+                history.pushState(null, null, initialHash);
+
+            } else if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+                history.pushState(null, null, initialHash);
+            }
+        }, 1050);
+    });
+}
 
 const TARGET_ELEMENT = document.getElementById('halo');
 const FINAL_TEXT = "Halo, Saya Faiz";
 
 const CHARACTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+=-';
 
-// PENGATURAN KECEPATAN SHUFFLE (Cepat)
-const FRAME_DURATION = 15;  
-const SHUFFLE_STEPS = 10;   
+const FRAME_DURATION = 15;
+const SHUFFLE_STEPS = 10;
 
-// PENGATURAN LOOP DAN FADE-OUT
-const PAUSE_DURATION = 1500;    
-const FADE_OUT_DURATION = 300;  
-const FADE_OUT_STEPS = 10;      
+const PAUSE_DURATION = 1500;
+const FADE_OUT_DURATION = 300;
+const FADE_OUT_STEPS = 10;
 
 function randomChar() {
     return CHARACTERS[Math.floor(Math.random() * CHARACTERS.length)];
 }
 
-// FUNGSI UTAMA SHUFFLE (Fade-In di dalamnya)
 function startScramble(callback) {
     let frame = 0;
     const queue = [];
-    const TOTAL_FRAMES = FINAL_TEXT.length * SHUFFLE_STEPS; 
-    
-  
+    const TOTAL_FRAMES = FINAL_TEXT.length * SHUFFLE_STEPS;
+
+
     for (let i = 0; i < FINAL_TEXT.length; i++) {
         const value = FINAL_TEXT[i];
         const delay = SHUFFLE_STEPS * i;
 
-        queue.push({ 
-            finalChar: value, 
-            startFrame: delay, 
-            endFrame: delay + SHUFFLE_STEPS 
+        queue.push({
+            finalChar: value,
+            startFrame: delay,
+            endFrame: delay + SHUFFLE_STEPS
         });
     }
 
@@ -275,20 +267,17 @@ function startScramble(callback) {
         }
 
         TARGET_ELEMENT.textContent = output;
-        
-        // Hitung Opacity (Fade-In)
+
         let opacity_progress = frame / TOTAL_FRAMES;
         if (opacity_progress > 1.0) { opacity_progress = 1.0; }
         TARGET_ELEMENT.style.opacity = opacity_progress;
 
-        // Lanjutkan jika belum selesai
         if (charactersCompleted !== queue.length) {
             frame++;
             setTimeout(update, FRAME_DURATION);
         } else {
-            // Animasi selesai, panggil callback (untuk melanjutkan ke Fade-Out)
             TARGET_ELEMENT.style.opacity = '1';
-            TARGET_ELEMENT.textContent = FINAL_TEXT; 
+            TARGET_ELEMENT.textContent = FINAL_TEXT;
             if (callback) callback();
         }
     }
@@ -296,52 +285,35 @@ function startScramble(callback) {
     update();
 }
 
-// FUNGSI FADE-OUT
 function fadeOut(callback) {
     let opacity = 1.0;
     const stepAmount = 1.0 / FADE_OUT_STEPS;
 
     function step() {
         opacity -= stepAmount;
-        
+
         if (opacity <= 0) {
             TARGET_ELEMENT.style.opacity = 0;
-            // Penting: Reset text content agar shuffle berikutnya dimulai dari kosong
-            TARGET_ELEMENT.textContent = ''; 
-            if (callback) callback(); // Fade out selesai, panggil loop lagi
+            TARGET_ELEMENT.textContent = '';
+            if (callback) callback();
             return;
         }
-        
+
         TARGET_ELEMENT.style.opacity = opacity;
-        
-        // Hitung delay per langkah fade-out
+
         const stepDelay = FADE_OUT_DURATION / FADE_OUT_STEPS;
         setTimeout(step, stepDelay);
     }
-    
+
     step();
 }
 
-// FUNGSI LOOPING UTAMA
 function loopAnimation() {
-    // 1. Mulai Shuffle (Fade-in terjadi selama shuffle)
     startScramble(() => {
-        
-        // 2. Jeda sejenak agar teks bisa dibaca
         setTimeout(() => {
-            
-            // 3. Mulai Fade-Out
             fadeOut(() => {
-                
-                // 4. Setelah Fade-Out selesai (opacity 0), ulangi loop
                 loopAnimation();
             });
-            
         }, PAUSE_DURATION);
     });
 }
-
-// Memulai fungsi saat seluruh HTML dimuat
-document.addEventListener('DOMContentLoaded', loopAnimation);
-
-
