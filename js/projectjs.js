@@ -4,6 +4,8 @@ const MOBILE_BREAKPOINT = 480;
 document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initMobileScrollAnimations();
+    // Also initialize scroll animations for all viewports (so landing elements animate even without mobile check)
+    initScrollAnimations();
 });
 
 function initSmoothScroll() {
@@ -54,6 +56,48 @@ function initSmoothScroll() {
 function initMobileScrollAnimations() {
     if (window.innerWidth > MOBILE_BREAKPOINT) return;
 
+    const animatedSections = [
+        { selector: '#header', delay: 0 },
+        { selector: '#opening', delay: 1 },
+        { selector: '#openingexp', delay: 2 },
+        { selector: '.box', delay: 1, multiple: true },
+        { selector: '.studycase', delay: 2, multiple: true },
+        { selector: '#sosmed', delay: 0 },
+        { selector: '#copyright', delay: 1 }
+    ];
+
+    const observerOptions = {
+        root: null,
+        threshold: 0.1,
+        rootMargin: '-20px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    animatedSections.forEach(section => {
+        const elements = section.multiple ? 
+            document.querySelectorAll(section.selector) :
+            [document.querySelector(section.selector)];
+
+        elements.forEach((el, index) => {
+            if (el) {
+                el.classList.add('scroll-reveal');
+                el.classList.add(`scroll-delay-${section.delay}`);
+                observer.observe(el);
+            }
+        });
+    });
+}
+
+// Initialize scroll animations for all viewports (no width guard)
+function initScrollAnimations() {
     const animatedSections = [
         { selector: '#header', delay: 0 },
         { selector: '#opening', delay: 1 },
