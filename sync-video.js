@@ -130,7 +130,6 @@ function initializePlayers() {
 }
 
 function initMobileScrollAnimations() {
-    if (window.innerWidth > MOBILE_BREAKPOINT) return;
 
     const animatedSections = [
         { selector: '#header', delay: 0 },
