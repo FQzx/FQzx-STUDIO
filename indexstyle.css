@@ -55,7 +55,6 @@ hr {
     display: none;
 }
 
-
 @keyframes pageFadeIn {
     0% {
         opacity: 0;
@@ -166,7 +165,6 @@ html {
 .scroll-delay-5 {
     transition-delay: 0.5s;
 }
-
 
 /*Shadow Text*/
 body,
@@ -420,7 +418,7 @@ p {
 }
 
 #introduce {
-    width: 500px;
+    width: 600px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
@@ -470,58 +468,6 @@ p {
 #flexintro {
     display: flex;
     text-align: center;
-}
-
-/*Kolase*/
-
-.kolase1 {
-    position: absolute;
-    gap: 10px;
-    width: fit-content;
-    margin-left: 55%;
-    margin-bottom: 200px;
-    z-index: 3;
-    transform: rotate(8deg) scale(0.8);
-}
-
-.kolase2 {
-    position: absolute;
-    gap: 10px;
-    width: fit-content;
-    margin-left: 62%;
-    margin-top: 25px;
-    z-index: 2;
-    transform: scale(0.8);
-}
-
-.kolase3 {
-    position: absolute;
-    gap: 10px;
-    width: fit-content;
-    margin-left: 55%;
-    margin-top: 250px;
-    z-index: 1;
-    transform: rotate(-8deg) scale(0.8);
-}
-
-.style {
-    background: rgba(255, 255, 255, 0.2);
-    width: fit-content;
-    border-radius: 15px;
-    padding-bottom: 5px;
-    margin: auto;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-#like {
-    height: 20px;
-    margin-left: 10px;
-}
-
-#attribute {
-    display: flex;
-    align-items: center;
-    gap: 3px;
 }
 
 
@@ -604,7 +550,7 @@ p {
 #myworks::after {
     content: '';
     position: absolute;
-    bottom: 7px;
+    bottom: 9px;
     left: 9px;
 
 
@@ -615,7 +561,7 @@ p {
 }
 
 #myworks:hover::after {
-    width: 80%;
+    width: 81%;
 }
 
 #myworks:hover {
@@ -677,7 +623,7 @@ a {
 }
 
 #myphoto {
-    height: 300px;
+    height: 230px;
     border-radius: 25px;
     flex: 1;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -706,20 +652,14 @@ a {
     margin-left: 20px;
 }
 
-#competence {
-    margin-left: 128px;
-    flex: 3;
-    text-align: justify;
-}
-
 #skills {
-    flex: 5;
+    margin-left: 6%;
     display: flex;
     align-items: center;
-    margin-right: 128px;
+    margin-right: 5%;
     flex-wrap: wrap;
     white-space: nowrap;
-    gap: 5px;
+    gap: 1px;
 }
 
 #skills a:hover span {
@@ -807,8 +747,8 @@ a {
 }
 
 .vimeo-sync-player {
-    width: 320px;
-    height: 180px;
+    width: 420px;
+    height: 280px;
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -838,7 +778,7 @@ a {
 
 /* CONTAINER WRAPPER UNTUK EFEK LOADING */
 .video-wrapper {
-    width: 320px;
+    width: 420px;
     height: auto;
     position: relative;
     overflow: hidden;
@@ -902,6 +842,8 @@ a {
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     padding: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     border-radius: 25px;
     width: fit-content;
 }
@@ -917,7 +859,7 @@ a {
     color: white;
     transition: color 0.5s ease;
     text-align: center;
-    font-size: 13px;
+    font-size: 10px;
 }
 
 #allpro a:hover {
@@ -985,6 +927,7 @@ a {
     font-size: 1.1em;
     color: #f0f0f0;
     font-weight: 500;
+    text-align: left;
 }
 
 .contact-form input[type="text"],
@@ -1240,35 +1183,6 @@ a {
         padding: unset;
     }
 
-    /*Kolase*/
-
-    .kolase1 {
-        margin: unset;
-        top: 0;
-        top: 3%;
-        left: 47%;
-        transform: translateX(-50%) scale(0.5) rotate(8deg);
-    }
-
-    .kolase2 {
-        top: 0;
-        top: 6%;
-        margin: unset;
-        left: 53%;
-        transform: translateX(-50%) scale(0.5);
-    }
-
-    .kolase3 {
-        top: 0;
-        top: 9%;
-        margin: unset;
-        left: 47%;
-        transform: translateX(-50%) scale(0.5) rotate(-8deg);
-    }
-
-
-
-
 
     /*Content*/
 
@@ -1438,17 +1352,6 @@ a {
         margin: unset;
         padding: unset;
     }
-
-    #competence {
-        margin: unset;
-        padding: unset;
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 5%;
-        max-width: 100%;
-        font-size: 12px;
-    }
-
 
     #skills {
         max-width: 100%;
@@ -1624,6 +1527,117 @@ a {
         font-size: 10px;
     }
 
+    /*video*/
+
+    #videocontent {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        border-radius: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 40px;
+        padding-bottom: 10px;
+        gap: 20px;
+    }
+
+    #video-kanan {
+        border-radius: 25px;
+        padding-right: 13px;
+    }
+
+    .video-title-right {
+        margin-left: 13px;
+    }
+
+    #video-kiri {
+        border-radius: 25px;
+    }
+
+    .vimeo-sync-player {
+        width: 320px;
+        height: 180px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .vimeo-sync-player.is-ready {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+    /* indexstyle.css */
+
+    /* DEFINISI ANIMASI SHIMMER */
+    @keyframes shimmer {
+        0% {
+            background-position: -200% 0;
+            /* Mulai dari kiri */
+        }
+
+        100% {
+            background-position: 200% 0;
+            /* Berakhir di kanan */
+        }
+    }
+
+
+    /* CONTAINER WRAPPER UNTUK EFEK LOADING */
+    .video-wrapper {
+        width: 320px;
+        height: auto;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+
+    .video-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+
+        background: linear-gradient(90deg, #222 0%, #3a3a3a 50%, #222 100%);
+        background-size: 200% 100%;
+
+        animation: shimmer 1.5s infinite linear;
+        z-index: 2;
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+
+
+    .video-wrapper.is-loaded::before {
+        opacity: 0;
+        /* Hilangkan shimmer */
+        pointer-events: none;
+    }
+
+
+
+    .vimeo-sync-player {
+
+        opacity: 0;
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        z-index: 3;
+        position: relative;
+    }
+
+
+    .vimeo-sync-player.is-ready {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
 }
 
 
@@ -1675,14 +1689,6 @@ a {
 
     #me {
         animation: slideUp 0.6s ease-out 0.6s forwards;
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    .kolase1,
-    .kolase2,
-    .kolase3 {
-        animation: slideUp 0.6s ease-out 0.8s forwards;
         opacity: 0;
         transform: translateY(30px);
     }
@@ -1771,15 +1777,13 @@ a {
 
     /*EndHeader*/
 
-
-
     /*Intro Settings*/
 
     #opening {
         flex-direction: column;
         margin: unset;
         padding: unset;
-        margin-top: 420px;
+        margin-top: 35%;
         margin-left: 5%;
         margin-right: 5%;
         display: block;
@@ -1803,6 +1807,8 @@ a {
 
     #introduce {
         width: 100%;
+        text-align: center;
+        margin-bottom: 20%;
     }
 
     #openingskills {
@@ -1812,7 +1818,7 @@ a {
 
     #halo {
         flex: none;
-        font-size: 30px;
+        font-size: 25px;
         margin: unset;
         text-align: left;
     }
@@ -1842,104 +1848,17 @@ a {
         flex-direction: column;
         margin: unset;
         padding: unset;
+        align-items: center;
     }
-
-    /*Kolase*/
-
-    .kolase1 {
-        margin: unset;
-        top: 3%;
-        left: 45%;
-        transform-origin: center;
-    }
-
-    .kolase2 {
-        top: 5%;
-        margin: unset;
-        left: 60%;
-        transform-origin: center;
-    }
-
-    .kolase3 {
-        top: 8%;
-        margin: unset;
-        left: 45%;
-        transform-origin: center;
-    }
-
-    /* Apply initial transforms */
-    .kolase1:not([style*="animation"]) {
-        transform: translateX(-50%) scale(0.5) rotate(8deg);
-    }
-
-    .kolase2:not([style*="animation"]) {
-        transform: translateX(-50%) scale(0.5);
-    }
-
-    .kolase3:not([style*="animation"]) {
-        transform: translateX(-50%) scale(0.5) rotate(-8deg);
-    }
-
-    /* Animation keyframes specifically for kolase */
-    @keyframes kolaseSlideUp1 {
-        from {
-            opacity: 0;
-            transform: translateX(-50%) translateY(30px) scale(0.5) rotate(8deg);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0) scale(0.5) rotate(8deg);
-        }
-    }
-
-    @keyframes kolaseSlideUp2 {
-        from {
-            opacity: 0;
-            transform: translateX(-50%) translateY(30px) scale(0.5);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0) scale(0.5);
-        }
-    }
-
-    @keyframes kolaseSlideUp3 {
-        from {
-            opacity: 0;
-            transform: translateX(-50%) translateY(30px) scale(0.5) rotate(-8deg);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0) scale(0.5) rotate(-8deg);
-        }
-    }
-
-    /* Apply specific animations to each kolase */
-    .kolase1 {
-        animation: kolaseSlideUp1 0.6s ease-out 0.8s forwards;
-    }
-
-    .kolase2 {
-        animation: kolaseSlideUp2 0.6s ease-out 0.9s forwards;
-    }
-
-    .kolase3 {
-        animation: kolaseSlideUp3 0.6s ease-out 1s forwards;
-    }
-
-
-
-
 
     /*Content*/
 
     #mobilecontent {
-        display: contents;
+        display: flex;
         margin: unset;
         padding: unset;
+        gap: 5px;
+        margin-bottom: 10px;
     }
 
     #ig {
@@ -1967,7 +1886,7 @@ a {
 
     #mobileig {
         height: 17px;
-        margin-bottom: 5px;
+        margin-top: 5px;
     }
 
     #mobilegithub {
@@ -1977,7 +1896,7 @@ a {
     #mobileemail {
         height: 22px;
         padding-left: 5px;
-        margin-bottom: 2px;
+        margin-top: 2px;
     }
 
     #content {
@@ -1986,13 +1905,21 @@ a {
 
 
 
-    /*My works*/
+    /*My works*/    
+
+    .wrappermobile {
+        display: flex;
+        flex-direction: row;
+        gap: 5px;
+        align-items: center;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
 
     #mobilemyworks {
         color: white;
         font-size: 10px;
         margin-top: 1px;
-        margin-bottom: 15px;
         position: relative;
         display: inline-block;
         font-family: ModernBold;
@@ -2104,17 +2031,6 @@ a {
         margin: unset;
         padding: unset;
     }
-
-    #competence {
-        margin: unset;
-        padding: unset;
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 5%;
-        max-width: 100%;
-        font-size: 13px;
-    }
-
 
     #skills {
         max-width: 100%;
@@ -2295,6 +2211,117 @@ a {
 
     #copyright {
         font-size: 10px;
+    }
+
+    /*video*/
+
+    #videocontent {
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        border-radius: 25px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 40px;
+        padding-bottom: 10px;
+        gap: 20px;
+    }
+
+    #video-kanan {
+        border-radius: 25px;
+        padding-right: 13px;
+    }
+
+    .video-title-right {
+        margin-left: 13px;
+    }
+
+    #video-kiri {
+        border-radius: 25px;
+    }
+
+    .vimeo-sync-player {
+        width: 320px;
+        height: 180px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .vimeo-sync-player.is-ready {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+
+    /* indexstyle.css */
+
+    /* DEFINISI ANIMASI SHIMMER */
+    @keyframes shimmer {
+        0% {
+            background-position: -200% 0;
+            /* Mulai dari kiri */
+        }
+
+        100% {
+            background-position: 200% 0;
+            /* Berakhir di kanan */
+        }
+    }
+
+
+    /* CONTAINER WRAPPER UNTUK EFEK LOADING */
+    .video-wrapper {
+        width: 320px;
+        height: auto;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        padding: 10px;
+    }
+
+
+    .video-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+
+
+        background: linear-gradient(90deg, #222 0%, #3a3a3a 50%, #222 100%);
+        background-size: 200% 100%;
+
+        animation: shimmer 1.5s infinite linear;
+        z-index: 2;
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+
+
+    .video-wrapper.is-loaded::before {
+        opacity: 0;
+        /* Hilangkan shimmer */
+        pointer-events: none;
+    }
+
+
+
+    .vimeo-sync-player {
+
+        opacity: 0;
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        z-index: 3;
+        position: relative;
+    }
+
+
+    .vimeo-sync-player.is-ready {
+        opacity: 1;
+        transform: translateY(0);
     }
 
 }
