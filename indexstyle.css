@@ -1780,7 +1780,7 @@ a {
         flex-direction: column;
         margin: unset;
         padding: unset;
-        margin-top: 50%;
+        margin-top: 60%;
         margin-left: 5%;
         margin-right: 5%;
         margin-bottom: 10%;
@@ -1855,7 +1855,7 @@ a {
         margin: unset;
         padding: unset;
         gap: 5px;
-        margin-bottom: 10px;
+        margin-bottom: 40%;
     }
 
     #ig {
