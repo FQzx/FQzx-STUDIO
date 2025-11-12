@@ -95,7 +95,6 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
 }
 
 html,
@@ -115,8 +114,18 @@ body::-webkit-scrollbar {
     min-height: 100vh;
     height: auto;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: clip;
     position: relative;
+
+    mask-image: linear-gradient(to top,
+            #fff,
+            #fff 90%,
+            transparent 100%);
+
+    -webkit-mask-image: linear-gradient(to top,
+            #fff,
+            #fff 90%,
+            transparent 100%);
 }
 
 /*Shadow Text*/
@@ -161,7 +170,7 @@ p {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     z-index: -1;
@@ -311,8 +320,10 @@ p {
     background: rgba(255, 255, 255, 0.2);
     width: 600px;
     margin: auto;
-    margin-top: 64px;
     border-radius: 50px;
+    position: sticky;
+    top: 0;
+    margin-top: 30px;
 }
 
 #brand {

@@ -23,7 +23,6 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    overflow-x: hidden;
 }
 
 
@@ -83,10 +82,24 @@ html {
     min-height: 100vh;
     height: auto;
     margin: 0 auto;
-    overflow: hidden;
     position: relative;
-}
+    overflow-x: clip;
+    z-index: 1;
+    
+    mask-image: linear-gradient(
+        to top,
+        #fff, 
+        #fff 90%, 
+        transparent 100% 
+    );
 
+    -webkit-mask-image: linear-gradient(
+        to top,
+        #fff,
+        #fff 90%,
+        transparent 100%
+    );
+}
 /*Anim Scroll*/
 
 #header {
@@ -107,6 +120,14 @@ html {
 .scroll-reveal.show {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Fade elements just before they go under the sticky header */
+.scroll-reveal.fade-under {
+    opacity: 0 !important;
+    transform: translateY(-8px) !important;
+    transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+    pointer-events: none;
 }
 
 /* Landing page initial load animations */
@@ -329,12 +350,6 @@ p {
     }
 }
 
-#header {
-    display: flex;
-    justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
 #fqzx {
     color: white;
     font-size: 20px;
@@ -357,10 +372,17 @@ p {
 }
 
 #header {
-    background: rgba(255, 255, 255, 0.2);
+    position: sticky !important;
+    top: 20px !important;
+    left: 0 !important;
+    right: 0 !important;
     width: 600px;
-    margin: auto;
-    margin-top: 64px;
+    margin: 0 auto !important;
+    z-index: 9999 !important;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     padding-top: 3px;
     padding-bottom: 3px;
@@ -403,7 +425,7 @@ p {
     align-items: center;
     padding-left: 128px;
     padding-right: 128px;
-    margin-top: 230px;
+    margin-top: 250px;
 }
 
 #halo {
@@ -1073,6 +1095,8 @@ a {
     }
 
     #header {
+        position: sticky;
+        top: 0;
         width: 400px;
         padding: unset;
         margin: unset;
@@ -1900,11 +1924,11 @@ a {
         display: none;
     }
 
-.proff {
-    display: none;
-}
+    .proff {
+        display: none;
+    }
 
-    /*My works*/    
+    /*My works*/
 
     .wrappermobile {
         display: flex;
