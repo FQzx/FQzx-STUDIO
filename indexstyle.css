@@ -85,21 +85,18 @@ html {
     position: relative;
     overflow-x: clip;
     z-index: 1;
-    
-    mask-image: linear-gradient(
-        to top,
-        #fff, 
-        #fff 90%, 
-        transparent 100% 
-    );
 
-    -webkit-mask-image: linear-gradient(
-        to top,
-        #fff,
-        #fff 90%,
-        transparent 100%
-    );
+    mask-image: linear-gradient(to top,
+            #fff,
+            #fff 90%,
+            transparent 100%);
+
+    -webkit-mask-image: linear-gradient(to top,
+            #fff,
+            #fff 90%,
+            transparent 100%);
 }
+
 /*Anim Scroll*/
 
 #header {
@@ -145,21 +142,6 @@ html {
 
 #header {
     animation: slideUp 0.6s ease-out forwards;
-}
-
-#title {
-    animation: slideUp 0.6s ease-out 0.2s forwards;
-    opacity: 0;
-}
-
-#titleex {
-    animation: slideUp 0.6s ease-out 0.4s forwards;
-    opacity: 0;
-}
-
-.box {
-    opacity: 0;
-    transform: translateY(30px);
 }
 
 /* Staggered delays for scroll animations */
@@ -387,6 +369,7 @@ p {
     padding-top: 3px;
     padding-bottom: 3px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    border: 1px solid white;
 }
 
 #brand {
@@ -554,6 +537,7 @@ p {
     padding: 10px;
     border-radius: 25px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    border: 1px solid white;
 }
 
 @keyframes fadeShift {
@@ -639,6 +623,7 @@ a {
     gap: 20px;
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid white;
 }
 
 #aboutme {
@@ -685,6 +670,10 @@ a {
     gap: 1px;
 }
 
+#marginhr {
+    margin-top: 10%;
+}
+
 
 #point {
     background: rgba(255, 255, 255, 0.2);
@@ -696,6 +685,7 @@ a {
     text-align: center;
     font-size: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid white;
 }
 
 
@@ -705,7 +695,7 @@ a {
 
 #projectsstyle {
     margin: auto;
-    margin-top: 120px;
+    margin-top: 150px;
     align-items: center;
 }
 
@@ -802,6 +792,7 @@ a {
     background: rgba(255, 255, 255, 0.2);
     border-radius: 25px;
     padding: 10px;
+    border: 1px solid white;
 }
 
 
@@ -862,6 +853,7 @@ a {
     padding-bottom: 15px;
     border-radius: 25px;
     width: fit-content;
+    border: 1px solid white;
 }
 
 #allprojectsexplain {
@@ -934,6 +926,7 @@ a {
     border-radius: 25px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
+    border: 1px solid white;
 }
 
 .contact-form label {
@@ -1079,6 +1072,7 @@ a {
     background: rgba(255, 255, 255, 0.2);
     padding-bottom: 10px;
     padding-top: 5px;
+    border: 1px solid white;
 }
 
 
@@ -1770,6 +1764,7 @@ a {
         padding-top: 10px;
         padding-bottom: 10px;
         margin-top: 20px;
+        backdrop-filter: blur(10px);
     }
 
     #brand {
@@ -1937,11 +1932,12 @@ a {
         align-items: center;
         margin-top: 5%;
         margin-bottom: 5%;
+        transform: scale(1.2);
     }
 
     #mobilemyworks {
         color: white;
-        font-size: 15px;
+        font-size: 18px;
         margin-top: 1px;
         position: relative;
         display: inline-block;
@@ -1953,6 +1949,7 @@ a {
         padding: 10px;
         border-radius: 10px;
         box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        border: 1px solid white;
     }
 
     @keyframes fadeShift {
@@ -1972,7 +1969,7 @@ a {
     #mobilemyworks::after {
         content: '';
         position: absolute;
-        bottom: 7px;
+        bottom: 10px;
         left: 9px;
 
 
@@ -1983,7 +1980,7 @@ a {
     }
 
     #mobilemyworks:hover::after {
-        width: 80%;
+        width: 85%;
     }
 
     #mobilemyworks:hover {
@@ -1997,9 +1994,10 @@ a {
         display: flex;
         font-size: 13px;
         margin: unset;
-        margin-top: 10%;
+        margin-top: 20%;
         justify-content: left;
         margin-left: 5%;
+        margin-top: 20%;
     }
 
     #about {
@@ -2010,6 +2008,7 @@ a {
         background-color: unset;
         box-shadow: unset;
         gap: unset;
+        border: unset;
     }
 
     #aboutme {

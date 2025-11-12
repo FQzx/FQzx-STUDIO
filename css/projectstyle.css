@@ -331,6 +331,8 @@ p {
     padding-top: 3px;
     padding-bottom: 3px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    border: 1px solid white;
+    backdrop-filter: blur(10px);
 }
 
 #brand {
@@ -398,6 +400,7 @@ a {
 }
 
 .box {
+    border: 1px solid white;
     align-items: center;
     margin-left: 64px;
     margin-right: 38px;
@@ -439,6 +442,7 @@ a {
     padding: 10px;
     border-radius: 25px;
     transition: color 0.5s ease;
+    border: 1px solid white;
 }
 
 .studycase {

@@ -46,7 +46,7 @@ function initSmoothScroll() {
             if (targetElement && globalLenis) {
                 globalLenis.scrollTo(targetElement, {
                     duration: 1.5,
-                    offset: -100
+                    offset: -170
                 });
             } else if (targetElement) {
                 targetElement.scrollIntoView({ behavior: 'smooth' });
