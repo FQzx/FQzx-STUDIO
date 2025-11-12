@@ -346,7 +346,7 @@ function fadeBeforeHeader() {
             // also skip elements explicitly marked not to fade (data-no-fade) and the email box
             if (!el) return;
             if (el.id === 'header' || el.closest('#header')) return;
-            if (el.id === 'email' || el.closest('#email')) return;
+            if (el.id === 'contact' || el.closest('#contact')) return;
             if (el.hasAttribute && el.hasAttribute('data-no-fade')) return;
 
             const rect = el.getBoundingClientRect();
