@@ -3,8 +3,8 @@ body {
     font-family: monospace;
     opacity: 0;
     transform: scale(1.01);
-    filter: blur(10px);
-    transition: opacity 1.2s ease-out, transform 1.2s ease-out, filter 1.2s ease-out;
+    filter: blur(6px);
+    transition: opacity 1s ease-out, transform 1s ease-out, filter 1s ease-out;
 }
 
 html,
@@ -57,7 +57,7 @@ hr {
 @keyframes pageFadeIn {
     0% {
         opacity: 0;
-        filter: blur(10px);
+        filter: blur(6px);
         transform: scale(1.01);
     }
 
@@ -112,6 +112,7 @@ html {
     opacity: 0;
     transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    will-change: opacity, transform;
 }
 
 .scroll-reveal.show {
@@ -123,7 +124,7 @@ html {
 .scroll-reveal.fade-under {
     opacity: 0 !important;
     transform: translateY(-8px) !important;
-    transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out;
     pointer-events: none;
 }
 
@@ -218,6 +219,8 @@ p {
     z-index: -1;
     filter: blur(90px);
     mix-blend-mode: screen;
+    will-change: filter;
+    contain: layout style paint;
 }
 
 /* Blobs */
@@ -226,6 +229,8 @@ p {
     border-radius: 50%;
     opacity: 0.35;
     animation: move 45s ease-in-out infinite;
+    will-change: transform;
+    contain: layout style;
 }
 
 /* Layer 1 - bold & visible */
@@ -363,13 +368,13 @@ p {
     z-index: 9999 !important;
     display: flex;
     justify-content: space-between;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     background: rgba(255, 255, 255, 0.2);
     border-radius: 50px;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding: 3px;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     border: 1px solid white;
+    backdrop-filter: blur(8px);
+    will-change: transform;
 }
 
 #brand {
@@ -389,7 +394,7 @@ p {
 #list li a {
     color: white;
     text-decoration: none;
-    transition: color 0.5s ease;
+    transition: color 0.3s ease;
 }
 
 #list a:hover {
@@ -450,13 +455,10 @@ p {
 }
 
 @keyframes fadeShift {
-
-    0%,
-    100% {
+    0%, 100% {
         opacity: 0.6;
         transform: translateY(0);
     }
-
     10% {
         opacity: 1;
         transform: translateY(-2px);
@@ -536,22 +538,8 @@ p {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     padding: 10px;
     border-radius: 25px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     border: 1px solid white;
-}
-
-@keyframes fadeShift {
-
-    0%,
-    100% {
-        opacity: 0.6;
-        transform: translateY(0);
-    }
-
-    10% {
-        opacity: 1;
-        transform: translateY(-2px);
-    }
+    will-change: color;
 }
 
 #myworks::after {
@@ -758,6 +746,7 @@ a {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
 }
 
 .vimeo-sync-player.is-ready {
@@ -766,21 +755,14 @@ a {
 }
 
 
-/* indexstyle.css */
-
-/* DEFINISI ANIMASI SHIMMER */
 @keyframes shimmer {
     0% {
         background-position: -200% 0;
-        /* Mulai dari kiri */
     }
-
     100% {
         background-position: 200% 0;
-        /* Berakhir di kanan */
     }
 }
-
 
 /* CONTAINER WRAPPER UNTUK EFEK LOADING */
 .video-wrapper {
@@ -793,44 +775,33 @@ a {
     border-radius: 25px;
     padding: 10px;
     border: 1px solid white;
+    will-change: contents;
 }
-
 
 .video-wrapper::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-
-
+    inset: 0;
     background: linear-gradient(90deg, #222 0%, #3a3a3a 50%, #222 100%);
     background-size: 200% 100%;
-
     animation: shimmer 1.5s infinite linear;
     z-index: 2;
     opacity: 1;
     transition: opacity 0.5s;
-}
-
-
-.video-wrapper.is-loaded::before {
-    opacity: 0;
-    /* Hilangkan shimmer */
     pointer-events: none;
 }
 
-
+.video-wrapper.is-loaded::before {
+    opacity: 0;
+    pointer-events: none;
+}
 
 .vimeo-sync-player {
-
     opacity: 0;
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     z-index: 3;
     position: relative;
 }
-
 
 .vimeo-sync-player.is-ready {
     opacity: 1;
@@ -898,28 +869,6 @@ a {
 /*EmailMe*/
 
 .form-container {
-    margin: auto;
-    margin-top: 80px;
-}
-
-.form-main-title {
-    color: #ffffff;
-    font-size: 2.5em;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 5px;
-    font-family: ModernBold;
-}
-
-.form-subtitle {
-    color: #cccccc;
-    font-size: 0.9em;
-    text-align: center;
-    margin-bottom: 25px;
-    padding: 0 10px;
-}
-
-.form-container {
     max-width: 600px;
     padding: 30px;
     background: rgba(255, 255, 255, 0.2);
@@ -927,6 +876,8 @@ a {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(5px);
     border: 1px solid white;
+    margin: auto;
+    margin-top: 80px;
 }
 
 .contact-form label {
@@ -940,33 +891,29 @@ a {
 }
 
 .contact-form input[type="text"],
-.contact-form input[type="email"] {
+.contact-form input[type="email"],
+.contact-form textarea {
     width: 100%;
-    height: 50px !important;
-    padding: 0 12px !important;
-
-    display: flex !important;
-    align-items: center !important;
-
-    line-height: normal !important;
-
     border: 1px solid rgba(255, 255, 255, 0.5);
     border-radius: 25px;
     box-sizing: border-box;
     font-size: 10px;
     background-color: rgba(0, 0, 0, 0.3);
     color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"] {
+    height: 50px !important;
+    padding: 0 12px !important;
+    display: flex !important;
+    align-items: center !important;
+    line-height: normal !important;
 }
 
 .contact-form textarea {
-    width: 100%;
     padding: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 25px;
-    box-sizing: border-box;
-    font-size: 10px;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: #ffffff;
     resize: vertical;
 }
 
@@ -988,7 +935,8 @@ a {
     border: none;
     border-radius: 25px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.2s ease;
+    will-change: background-color;
 }
 
 .submit-button:hover {
@@ -1092,15 +1040,13 @@ a {
         position: sticky;
         top: 0;
         width: 400px;
-        padding: unset;
-        margin: unset;
+        padding: 10px;
         margin: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
         margin-top: 20px;
+        will-change: transform;
     }
 
     #brand {
@@ -1144,21 +1090,6 @@ a {
         display: block;
         font-size: 12px;
         margin-top: 100px;
-    }
-
-
-    @keyframes fadeShift {
-
-        0%,
-        100% {
-            opacity: 0.6;
-            transform: translateY(0);
-        }
-
-        10% {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
     }
 
     #introduce {
@@ -1259,23 +1190,20 @@ a {
         position: relative;
         display: inline-block;
         font-family: ModernBold;
-        transition: color 0.5s ease;
+        transition: color 0.3s ease;
         animation: fadeShift 3s ease-in-out infinite;
         background: rgba(255, 255, 255, 0.2);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         padding: 10px;
         border-radius: 25px;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+        will-change: color;
     }
 
     @keyframes fadeShift {
-
-        0%,
-        100% {
+        0%, 100% {
             opacity: 0.6;
             transform: translateY(0);
         }
-
         10% {
             opacity: 1;
             transform: translateY(-2px);
@@ -1661,86 +1589,7 @@ a {
 
 @media screen and (max-width: 480px) {
 
-    /* Mobile scroll animations */
-    .scroll-reveal {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .scroll-reveal.show {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* Landing page initial load animations */
-    @keyframes slideUp {
-        from {
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    #header {
-        animation: slideUp 0.6s ease-out forwards;
-    }
-
-    #halo {
-        animation: slideUp 0.6s ease-out 0.2s forwards;
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    #intro {
-        animation: slideUp 0.6s ease-out 0.4s forwards;
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    #me {
-        animation: slideUp 0.6s ease-out 0.6s forwards;
-        opacity: 0;
-        transform: translateY(30px);
-    }
-
-    /* Staggered delays for scroll animations */
-    .scroll-delay-0 {
-        transition-delay: 0s;
-    }
-
-    .scroll-delay-1 {
-        transition-delay: 0.1s;
-    }
-
-    .scroll-delay-2 {
-        transition-delay: 0.2s;
-    }
-
-    .scroll-delay-3 {
-        transition-delay: 0.3s;
-    }
-
-    .scroll-delay-4 {
-        transition-delay: 0.4s;
-    }
-
-    .scroll-delay-5 {
-        transition-delay: 0.5s;
-    }
-
-    hr {
-        display: flex;
-        margin-left: 5%;
-        margin-right: 5%;
-        margin-top: 10px;
-        opacity: 50%;
-    }
-
+    /* Mobile optimizations - disabled complex animations */
     body {
         opacity: 1 !important;
         transform: none !important;
@@ -1753,18 +1602,28 @@ a {
         display: none;
     }
 
+    .scroll-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+
+    .scroll-reveal.show {
+        opacity: 1;
+        transform: none;
+    }
+
+    /* Header */
     #header {
         width: 350px;
-        padding: unset;
-        margin: unset;
+        padding: 10px;
         margin: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 10px;
-        padding-bottom: 10px;
         margin-top: 20px;
         backdrop-filter: blur(10px);
+        animation: none;
     }
 
     #brand {
@@ -1791,35 +1650,16 @@ a {
         padding: unset;
     }
 
-    /*EndHeader*/
-
-    /*Intro Settings*/
-
+    /* Intro */
     #opening {
         flex-direction: column;
-        margin: unset;
-        padding: unset;
-        margin-top: 60%;
         margin-left: 5%;
         margin-right: 5%;
+        margin-top: 60%;
         margin-bottom: 10%;
         display: block;
         font-size: 13px;
-    }
-
-
-    @keyframes fadeShift {
-
-        0%,
-        100% {
-            opacity: 0.6;
-            transform: translateY(0);
-        }
-
-        10% {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
+        padding: unset;
     }
 
     #introduce {
@@ -1832,31 +1672,13 @@ a {
         display: none;
     }
 
-
     #halo {
         flex: none;
         font-size: 25px;
         margin: unset;
-    }
-
-    #me {
-        flex: none;
-        margin-top: 30px;
-        font-size: 10px;
-        max-width: 100%;
-        text-align: justify;
-    }
-
-    #title {
-        font-size: 9px;
-        padding-top: 15px;
-        white-space: nowrap;
-    }
-
-    #title2 {
-        font-size: 12px;
-        white-space: nowrap;
-        margin-right: 5px;
+        opacity: 1;
+        transform: none;
+        animation: none;
     }
 
     #intro {
@@ -1867,8 +1689,29 @@ a {
         align-items: center;
     }
 
-    /*Content*/
+    #me {
+        flex: none;
+        margin-top: 30px;
+        font-size: 10px;
+        max-width: 100%;
+        text-align: justify;
+        animation: none;
+    }
 
+    #title {
+        font-size: 9px;
+        padding-top: 15px;
+        white-space: nowrap;
+        animation: none;
+    }
+
+    #title2 {
+        font-size: 12px;
+        white-space: nowrap;
+        margin-right: 5px;
+    }
+
+    /* Icons & Content */
     #mobilecontent {
         display: flex;
         margin: unset;
@@ -1877,27 +1720,26 @@ a {
         margin-bottom: 40%;
     }
 
-    #ig {
-        height: 17px;
+    #content {
+        display: none;
+    }
+
+    #ig, #github, #email {
         margin: unset;
         padding: unset;
+    }
+
+    #ig {
+        height: 17px;
     }
 
     #github {
         height: 27px;
-        margin: unset;
-        padding: unset;
     }
 
     #email {
         height: 22px;
-        padding: unset;
-        margin: unset;
         padding-left: 5px;
-    }
-
-    #content {
-        display: none;
     }
 
     #mobileig {
@@ -1915,16 +1757,11 @@ a {
         margin-top: 2px;
     }
 
-    #content {
-        display: none;
-    }
-
     .proff {
         display: none;
     }
 
-    /*My works*/
-
+    /* My Works Button */
     .wrappermobile {
         display: flex;
         flex-direction: column;
@@ -1942,28 +1779,13 @@ a {
         position: relative;
         display: inline-block;
         font-family: ModernBold;
-        transition: color 0.5s ease;
-        animation: fadeShift 3s ease-in-out infinite;
+        transition: color 0.3s ease;
         background: rgba(255, 255, 255, 0.2);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         padding: 10px;
         border-radius: 10px;
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
         border: 1px solid white;
-    }
-
-    @keyframes fadeShift {
-
-        0%,
-        100% {
-            opacity: 0.6;
-            transform: translateY(0);
-        }
-
-        10% {
-            opacity: 1;
-            transform: translateY(-2px);
-        }
+        animation: none;
     }
 
     #mobilemyworks::after {
@@ -1971,8 +1793,6 @@ a {
         position: absolute;
         bottom: 10px;
         left: 9px;
-
-
         width: 0;
         height: 2px;
         background-color: #00ffff;
@@ -1987,28 +1807,23 @@ a {
         color: #00ffff;
     }
 
-
-    /*About*/
-
+    /* About */
     #who {
         display: flex;
         font-size: 13px;
-        margin: unset;
-        margin-top: 20%;
-        justify-content: left;
         margin-left: 5%;
         margin-top: 20%;
     }
 
     #about {
-        margin: unset;
-        padding: unset;
         margin-left: 5%;
         margin-right: 5%;
+        padding: unset;
         background-color: unset;
         box-shadow: unset;
         gap: unset;
         border: unset;
+        display: flex;
     }
 
     #aboutme {
@@ -2019,7 +1834,6 @@ a {
     #explainabout {
         text-align: left;
         margin: unset;
-        padding: unset;
         padding-right: 3%;
         font-size: 13px;
     }
@@ -2038,12 +1852,10 @@ a {
         display: contents !important;
     }
 
-    /*Competen*/
-
+    /* Competence */
     #titlecompetence {
         margin: unset;
         padding: unset;
-        font-size: small;
         margin-top: 5%;
         margin-left: 5%;
         font-size: 13px;
@@ -2068,15 +1880,11 @@ a {
 
     #point {
         font-size: 10px;
-        margin-top: 5%;
-        white-space: nowrap;
         margin: unset;
-        font-size: 10px;
+        white-space: nowrap;
     }
 
-
-    /*Proof*/
-
+    /* Projects */
     #proff {
         margin-bottom: 10%;
     }
@@ -2094,20 +1902,46 @@ a {
     #projectsexplain {
         font-size: 13px;
         width: 90%;
-        margin: unset;
-        margin-left: 10%;
-        margin-right: 10%;
         margin: auto;
     }
 
     #videocontent {
         flex-direction: column;
         transform: scale(1);
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 40px;
+        padding-bottom: 10px;
+        gap: 20px;
     }
 
+    #video-kanan {
+        border-radius: 25px;
+        padding-right: 13px;
+    }
 
-    /*EmailMe*/
+    #video-kiri {
+        border-radius: 25px;
+    }
 
+    .video-title-right {
+        margin-left: 13px;
+    }
+
+    .vimeo-sync-player {
+        width: 320px;
+        height: 180px;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .vimeo-sync-player.is-ready {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Form */
     #contact {
         margin-left: 8%;
         margin-right: 8%;
@@ -2116,6 +1950,12 @@ a {
     .form-container {
         margin: auto;
         margin-top: 80px;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 25px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(5px);
+        max-width: 600px;
     }
 
     .form-main-title {
@@ -2123,6 +1963,7 @@ a {
         font-size: 10px;
         text-align: center;
         margin-bottom: 5px;
+        font-family: ModernBold;
     }
 
     .form-subtitle {
@@ -2131,15 +1972,6 @@ a {
         text-align: center;
         margin-bottom: 25px;
         padding: 0 10px;
-    }
-
-    .form-container {
-        max-width: 600px;
-        padding: 30px;
-        background: rgba(255, 255, 255, 0.2);
-        border-radius: 25px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(5px);
     }
 
     .contact-form label {
@@ -2152,16 +1984,9 @@ a {
     }
 
     .contact-form input[type="text"],
-    .contact-form input[type="email"] {
+    .contact-form input[type="email"],
+    .contact-form textarea {
         width: 100%;
-        height: 50px !important;
-        padding: 0 12px !important;
-
-        display: flex !important;
-        align-items: center !important;
-
-        line-height: normal !important;
-
         border: 1px solid rgba(255, 255, 255, 0.5);
         border-radius: 6px;
         box-sizing: border-box;
@@ -2170,15 +1995,17 @@ a {
         color: #ffffff;
     }
 
+    .contact-form input[type="text"],
+    .contact-form input[type="email"] {
+        height: 50px !important;
+        padding: 0 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        line-height: normal !important;
+    }
+
     .contact-form textarea {
-        width: 100%;
         padding: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        border-radius: 6px;
-        box-sizing: border-box;
-        font-size: 10px;
-        background-color: rgba(0, 0, 0, 0.3);
-        color: #ffffff;
         resize: vertical;
     }
 
@@ -2206,16 +2033,10 @@ a {
         background-color: #0056b3;
     }
 
-    /*view all*/
-
+    /* All Projects */
     #allpro {
-        margin: unset;
-        padding: unset;
         margin: auto;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding: 10px;
     }
 
     #allprojects {
@@ -2230,71 +2051,31 @@ a {
         margin-top: 5%;
         font-size: 10px;
         max-width: 330px;
+    }
 
+    /* Footer */
+    hr {
+        display: flex;
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-top: 10px;
+        opacity: 50%;
     }
 
     #copyright {
         font-size: 10px;
     }
 
-    /*video*/
-
-    #videocontent {
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        border-radius: 25px;
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 40px;
-        padding-bottom: 10px;
-        gap: 20px;
-    }
-
-    #video-kanan {
-        border-radius: 25px;
-        padding-right: 13px;
-    }
-
-    .video-title-right {
-        margin-left: 13px;
-    }
-
-    #video-kiri {
-        border-radius: 25px;
-    }
-
-    .vimeo-sync-player {
-        width: 320px;
-        height: 180px;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-    }
-
-    .vimeo-sync-player.is-ready {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-
-    /* indexstyle.css */
-
-    /* DEFINISI ANIMASI SHIMMER */
+    /* Video Wrapper */
     @keyframes shimmer {
         0% {
             background-position: -200% 0;
-            /* Mulai dari kiri */
         }
-
         100% {
             background-position: 200% 0;
-            /* Berakhir di kanan */
         }
     }
 
-
-    /* CONTAINER WRAPPER UNTUK EFEK LOADING */
     .video-wrapper {
         width: 320px;
         height: auto;
@@ -2306,46 +2087,22 @@ a {
         padding: 10px;
     }
 
-
     .video-wrapper::before {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-
-
+        inset: 0;
         background: linear-gradient(90deg, #222 0%, #3a3a3a 50%, #222 100%);
         background-size: 200% 100%;
-
         animation: shimmer 1.5s infinite linear;
         z-index: 2;
         opacity: 1;
         transition: opacity 0.5s;
-    }
-
-
-    .video-wrapper.is-loaded::before {
-        opacity: 0;
-        /* Hilangkan shimmer */
         pointer-events: none;
     }
 
-
-
-    .vimeo-sync-player {
-
+    .video-wrapper.is-loaded::before {
         opacity: 0;
-        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        z-index: 3;
-        position: relative;
-    }
-
-
-    .vimeo-sync-player.is-ready {
-        opacity: 1;
-        transform: translateY(0);
+        pointer-events: none;
     }
 
 }
